@@ -1,0 +1,23 @@
+@import "src/styles/mixin";
+@import "src/styles/variables";
+
+.container {
+  @include displayContentCenter();
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+
+  @media screen and (max-width: $news_container_width) {
+
+    & {
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+  }
+
+  @include paddingMobileMenu();
+}
+

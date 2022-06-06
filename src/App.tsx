@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { FC, useEffect } from 'react'
 
-function App() {
+import style from 'App.module.scss'
+import { ErrorComponent, Loader, RoutesComponent } from 'components'
+import { Menu } from 'components/Menu'
+import { useAppDispatch } from 'store/store'
+import { getContactsTC, getCoursesTC } from 'store/thunks'
+
+const App: FC = () => {
+  const dispatch = useAppDispatch()
+
+  // возможно есть место получше для useEffect
+  useEffect(() => {
+    dispatch(getCoursesTC())
+    dispatch(getContactsTC())
+  }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={style.container}>
+      <Loader />
+      <Menu />
+      <RoutesComponent />
+      <ErrorComponent />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

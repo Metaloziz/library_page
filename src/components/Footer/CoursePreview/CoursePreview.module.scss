@@ -1,0 +1,42 @@
+@import "src/styles/mixin";
+@import "src/styles/variables";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  min-width: 300px;
+  min-height: 225px;
+  background-color: $green;
+  border-radius: 10px;
+  padding: 15px;
+  cursor: pointer;
+  gap: 10px;
+
+  a {
+    color: $back;
+  }
+
+  h2 {
+    margin-bottom: 10px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 47px;
+
+    color: $back_card;
+
+    display: flex;
+    align-items: center;
+  }
+
+  div {
+    @include textColumns(5, 16px);
+    margin-bottom: 10px;
+  }
+
+  span {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

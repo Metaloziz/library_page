@@ -1,0 +1,11 @@
+@import "styles/mixin";
+@import "styles/variables";
+
+.container {
+  @include container();
+  flex-direction: row;
+  align-items: flex-start;
+  height: auto;
+  width: 100%;
+  max-width: $app_width;
+}

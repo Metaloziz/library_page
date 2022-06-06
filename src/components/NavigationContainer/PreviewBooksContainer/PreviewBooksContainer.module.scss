@@ -1,0 +1,17 @@
+@import "src/styles/mixin";
+@import "src/styles/variables";
+
+
+.container {
+  @include displayContentCenter();
+  height: 100px;
+  background-color: #ad4242;
+  gap: $gap_general;
+
+  .item {
+    height: 90%;
+    width: 100px;
+    background-color: #2F5A53;
+  }
+
+}

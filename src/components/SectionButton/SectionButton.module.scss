@@ -1,0 +1,68 @@
+@import "src/styles/variables";
+@import "src/styles/mixin";
+
+.container {
+  text-align: start;
+  color: $gray;
+  cursor: pointer;
+  position: relative;
+  border: none;
+  background: none;
+  text-transform: uppercase;
+  transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-duration: 400ms;
+  transition-property: color;
+
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 23px;
+
+  &:focus, &:hover {
+    color: $dark;
+  }
+
+  &:focus:after, &:hover:after {
+    width: 100%;
+    left: 0;
+  }
+
+  &:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    left: 50%;
+    position: absolute;
+    width: 0;
+    height: 1px;
+    background-color: $dark;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+  }
+
+}
+
+.active { // жуткое дублирование, посоветоваться как убрать
+
+  color: $dark;
+
+  &:after {
+    width: 100%;
+    left: 0;
+  }
+
+  &:after {
+    content: "";
+    pointer-events: none;
+    bottom: -2px;
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: $dark;
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition-duration: 400ms;
+    transition-property: width, left;
+  }
+}

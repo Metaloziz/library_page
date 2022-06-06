@@ -1,0 +1,36 @@
+@import "src/styles/mixin";
+@import "src/styles/variables";
+
+.container {
+  @include displayContentCenter();
+  align-items: flex-start;
+  gap: $gap_general;
+
+  .preview {
+    flex-basis: 70%;
+    //background-color: $green;
+
+
+    .body {
+      @include displayContentCenter();
+      align-items: flex-start;
+      flex-direction: column;
+      gap: $gap_general;
+    }
+  }
+
+  .navigation {
+    flex-basis: 30%;
+    height: 100vh;
+    background-color: $green;
+  }
+
+  @media screen and (max-width: $news_container_width) {
+    .body {
+      flex-direction: column;
+    }
+  }
+
+  @include paddingMobileMenu();
+
+}

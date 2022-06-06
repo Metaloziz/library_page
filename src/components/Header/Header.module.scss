@@ -1,0 +1,77 @@
+@import "src/styles/mixin";
+@import "src/styles/variables";
+
+.container {
+  @include container();
+  width: 100%;
+  min-height: 300px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  .preview {
+    @include container();
+    width: 70%;
+
+    h1 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 48px;
+      line-height: 120%;
+
+      color: $dark;
+    }
+
+    h3 {
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 120%;
+
+      color: $green;
+    }
+  }
+
+  .text {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 130%;
+
+    display: flex;
+    align-items: center;
+
+    color: $dark;
+    margin-bottom: 30px;
+  }
+
+  .image {
+    width: 40%;
+    min-width: 200px;
+    left: 65%;
+    max-width: 350px;
+  }
+
+  @media screen and (max-width: $width_menu) {
+
+    & {
+
+      margin-top: 80px;
+
+      .preview {
+        h1 {
+          font-size: 24px;
+        }
+
+        h3 {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  @include paddingMobileMenu();
+}
