@@ -109,3 +109,8 @@
     }
   }
 }
+
+@mixin boxBorder {
+  border-radius: $border_radius;
+  box-shadow: 0 0 10px rgba(28, 29, 37, 0.26);
+}
