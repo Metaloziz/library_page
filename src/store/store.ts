@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 
 import { appReducer } from 'store/reducers'
+import { authorsReducer } from 'store/reducers/author_reducer'
 import { contentTypeReducer } from 'store/reducers/content_type_reducer'
 import { directionsReducer } from 'store/reducers/direction_reducer'
 
@@ -11,6 +12,7 @@ export const store = configureStore({
     app: appReducer,
     directions: directionsReducer,
     contentType: contentTypeReducer,
+    authors: authorsReducer,
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunkMiddleware),
 })

@@ -8,8 +8,10 @@ beforeEach(() => {
   separator = '<br>'
 })
 
-test('delete <br> from string', () => {
-  const result = separateAddress(someString)
+describe('all utils', () => {
+  test('delete <br> from string', () => {
+    const result = separateAddress(someString)
 
-  expect(result.includes(separator)).toBeFalsy()
+    expect(result.includes(separator)).toBeFalsy()
+  })
 })

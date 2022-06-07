@@ -17,7 +17,7 @@ export enum Path {
 
 export enum RequestSource {
   DIRECTIONS = '/directions',
-  COMMENTS = '/comments',
+  AUTHORS = '/authors',
   SECTIONS = '/sections',
   SEARCH = 'search',
   POPULAR = 'popular',
@@ -30,6 +30,7 @@ export enum RequestCommonData {
 
 export enum StatusCode {
   GET_DIRECTIONS_SUCCESS = 200,
+  GET_AUTHORS_SUCCESS = 200,
   SUCCESS = 204,
   POST_NEWS_SUCCESS = 201,
   GET_COURSES_SUCCESS = 200,
