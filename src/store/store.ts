@@ -6,6 +6,7 @@ import { appReducer } from 'store/reducers'
 import { authorsReducer } from 'store/reducers/author_reducer'
 import { contentTypeReducer } from 'store/reducers/content_type_reducer'
 import { directionsReducer } from 'store/reducers/direction_reducer'
+import { tagsReducer } from 'store/reducers/tags_reducer'
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     directions: directionsReducer,
     contentType: contentTypeReducer,
     authors: authorsReducer,
+    tags: tagsReducer,
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunkMiddleware),
 })

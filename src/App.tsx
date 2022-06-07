@@ -5,7 +5,6 @@ import { ErrorComponent, Loader, RoutesComponent } from 'components'
 import { Menu } from 'components/Menu'
 import { useAppDispatch } from 'store/store'
 import { getContactsTC, getCoursesTC } from 'store/thunks'
-import { getDirectionsTC } from 'store/thunks/directions_thunks'
 
 const App: FC = () => {
   const dispatch = useAppDispatch()
@@ -14,7 +13,6 @@ const App: FC = () => {
   useEffect(() => {
     dispatch(getCoursesTC())
     dispatch(getContactsTC())
-    dispatch(getDirectionsTC())
   }, [])
 
   return (

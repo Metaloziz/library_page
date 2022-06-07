@@ -15,20 +15,20 @@ export const DirectionNavigation: FC = () => {
   const directions = useSelector(selectDirections)
   const activeDirectionId = useSelector(selectActiveDirection)
 
-  const setDirection = (directionId: number): void => {
+  const setDirection = (directionId: string): void => {
     dispatch(setDirectionAC(directionId))
   }
 
   return (
     <div className={style.container}>
-      <h3>Разделы</h3>
-      <span>
+      <h3>Разделы \ directions</h3>
+      <div>
         <NavigationSelect
           sections={directions}
           activeSectionId={activeDirectionId}
           handleCurrentSection={setDirection}
         />
-      </span>
+      </div>
     </div>
   )
 }

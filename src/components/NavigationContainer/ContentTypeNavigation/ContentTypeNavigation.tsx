@@ -29,7 +29,7 @@ export const ContentTypeNavigation: FC = () => {
   return (
     <div className={style.container}>
       <h3>Типы:</h3>
-      <span>
+      <div>
         <SectionButton
           name="Все"
           isActive={isBooks && isArticle && isVideo}
@@ -50,7 +50,7 @@ export const ContentTypeNavigation: FC = () => {
           isActive={isVideo}
           onClick={() => setCurrentContentType({ name: 'isVideo', value: !isVideo })}
         />
-      </span>
+      </div>
     </div>
   )
 }

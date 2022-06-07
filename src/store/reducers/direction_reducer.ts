@@ -5,12 +5,12 @@ import { DirectionType } from 'store/types/DirectionType'
 
 export type DirectionInitialStateType = {
   directions: DirectionType[]
-  activeDirection: number
+  activeDirection: string
 }
 
 export const initialState: DirectionInitialStateType = {
-  directions: [{ uuid: 0, name: '' }],
-  activeDirection: 0,
+  directions: [{ uuid: '0', name: '' }],
+  activeDirection: '0',
 }
 
 const mainSlice = createSlice({
@@ -24,10 +24,7 @@ const mainSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(getDirectionsTC.fulfilled, (state, action) => {
       if (action.payload) {
-        state.directions = action.payload.map(directionItem => ({
-          ...directionItem,
-          uuid: Number(directionItem.uuid),
-        }))
+        state.directions = action.payload
       }
     })
   },

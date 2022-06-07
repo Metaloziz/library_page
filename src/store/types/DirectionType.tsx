@@ -1,4 +1,4 @@
 export type DirectionType = {
-  uuid: number
+  uuid: string
   name: string
 }

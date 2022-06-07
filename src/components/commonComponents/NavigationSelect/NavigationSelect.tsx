@@ -7,8 +7,8 @@ import { DirectionType } from 'store/types/DirectionType'
 
 type NavigationDirectionPT = {
   sections: DirectionType[]
-  activeSectionId: number
-  handleCurrentSection: (sectionId: number) => void
+  activeSectionId: string
+  handleCurrentSection: (sectionId: string) => void
 }
 
 export const NavigationSelect: FC<NavigationDirectionPT> = ({
@@ -16,27 +16,20 @@ export const NavigationSelect: FC<NavigationDirectionPT> = ({
   activeSectionId,
   handleCurrentSection,
 }) => {
-  const setCurrentCount = (sectionId: number): void => {
+  const setCurrentCount = (sectionId: string): void => {
     handleCurrentSection(sectionId)
   }
 
   return (
-    <div className={style.container} role="button" tabIndex={0}>
-      <div className={style.items}>
-        {sections.map(section => (
-          <div
-            key={section.uuid}
-            tabIndex={-1}
-            role="button"
-            onClick={() => setCurrentCount(section.uuid)}
-          >
-            <SectionButton
-              isActive={section.uuid === activeSectionId}
-              name={section.name}
-            />
-          </div>
-        ))}
-      </div>
+    <div className={style.container}>
+      {sections.map(section => (
+        <SectionButton
+          key={section.uuid}
+          isActive={section.uuid === activeSectionId}
+          name={section.name}
+          onClick={() => setCurrentCount(section.uuid)}
+        />
+      ))}
     </div>
   )
 }

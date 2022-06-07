@@ -8,17 +8,17 @@ import { DirectionType } from 'store/types/DirectionType'
 
 let directionInitialState: DirectionInitialStateType
 let newDirections: DirectionType[]
-const newActiveDirection: number = 10
+const newActiveDirection: string = '10'
 
 beforeEach(() => {
   directionInitialState = {
     directions: [],
-    activeDirection: 0,
+    activeDirection: '0',
   }
 
   newDirections = [
-    { uuid: 1, name: 'JS' },
-    { uuid: 2, name: 'TS' },
+    { uuid: '1', name: 'JS' },
+    { uuid: '2', name: 'TS' },
   ]
 })
 
