@@ -1,10 +1,34 @@
 import { FC } from 'react'
 
-import { NavigationSelect } from 'components/NavigationContainer/DirectionNavigation/NavigationSelect'
+import { useSelector } from 'react-redux'
 
-export const DirectionNavigation: FC = () => (
-  <div>
-    <h3>Направления</h3>
-    <span>{/* <NavigationSelect /> */}</span>
-  </div>
-)
+import style from './DirectionNavigation.module.scss'
+
+import { NavigationSelect } from 'components/NavigationContainer/DirectionNavigation/NavigationSelect'
+import { setDirectionAC } from 'store/reducers/direction_reducer'
+import { selectActiveDirection, selectDirections } from 'store/selectors/directions'
+import { useAppDispatch } from 'store/store'
+
+export const DirectionNavigation: FC = () => {
+  const dispatch = useAppDispatch()
+
+  const directions = useSelector(selectDirections)
+  const activeDirectionId = useSelector(selectActiveDirection)
+
+  const setDirection = (directionId: number): void => {
+    dispatch(setDirectionAC(directionId))
+  }
+
+  return (
+    <div className={style.container}>
+      <h3>Разделы</h3>
+      <span>
+        <NavigationSelect
+          sections={directions}
+          activeSectionId={activeDirectionId}
+          handleCurrentCount={setDirection}
+        />
+      </span>
+    </div>
+  )
+}

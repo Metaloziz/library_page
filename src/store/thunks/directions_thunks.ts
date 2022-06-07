@@ -14,7 +14,6 @@ export const getDirectionsTC = createAsyncThunk(
 
       const { data, status } = await directionsAPI.getDirections()
       if (status === StatusCode.GET_DIRECTIONS_SUCCESS) {
-        console.log(data)
         return data
       }
     } catch (error) {

@@ -17,12 +17,10 @@
     gap: 5px;
     transform: translate(0, +5%); // отступ от заголовка
     margin-top: 15px;
-    position: absolute;
     height: auto;
-    opacity: 0;
     background-color: $back;
     padding: 10px 0 10px 0;
-    box-shadow: 0 0 10px rgba(28, 29, 37, 0.26);
+    @include boxBorder();
 
     div {
       display: flex;
@@ -31,10 +29,6 @@
       height: 30px;
       cursor: pointer;
       margin-left: 10px;
-    }
-
-    &.active {
-      opacity: 1;
     }
   }
 
