@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux'
 
 import style from './DirectionNavigation.module.scss'
 
-import { NavigationSelect } from 'components/NavigationContainer/DirectionNavigation/NavigationSelect'
+import { NavigationSelect } from 'components/commonComponents/NavigationSelect'
 import { setDirectionAC } from 'store/reducers/direction_reducer'
 import { selectActiveDirection, selectDirections } from 'store/selectors/directions'
 import { useAppDispatch } from 'store/store'
@@ -26,7 +26,7 @@ export const DirectionNavigation: FC = () => {
         <NavigationSelect
           sections={directions}
           activeSectionId={activeDirectionId}
-          handleCurrentCount={setDirection}
+          handleCurrentSection={setDirection}
         />
       </span>
     </div>

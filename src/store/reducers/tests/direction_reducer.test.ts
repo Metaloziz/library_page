@@ -1,10 +1,10 @@
-import { DirectionType } from 'components/NavigationContainer/DirectionNavigation/NavigationSelect'
 import {
   DirectionInitialStateType,
   directionsReducer,
   setDirectionAC,
 } from 'store/reducers/direction_reducer'
 import { getDirectionsTC } from 'store/thunks/directions_thunks'
+import { DirectionType } from 'store/types/DirectionType'
 
 let directionInitialState: DirectionInitialStateType
 let newDirections: DirectionType[]

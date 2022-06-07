@@ -7,8 +7,8 @@ import {
 } from 'store/reducers/index'
 import { getContactsTC, getCoursesTC } from 'store/thunks/app_thunks'
 import { InitialAppStateType } from 'store/types'
-import { ContactsType } from 'store/types/contacts_type'
-import { CoursesType } from 'store/types/courses_type'
+import { ContactsType } from 'store/types/ContactsType'
+import { CoursesType } from 'store/types/CoursesType'
 
 let appInitialState: InitialAppStateType
 let errorMessage: string

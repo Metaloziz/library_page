@@ -1,5 +1,5 @@
-import { ContactsType } from './contacts_type'
-import { CoursesType } from './courses_type'
+import { ContactsType } from 'store/types/ContactsType'
+import { CoursesType } from 'store/types/CoursesType'
 
 export type InitialAppStateType = {
   isError: boolean

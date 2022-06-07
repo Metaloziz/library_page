@@ -1,6 +1,6 @@
 import { RootState } from 'store/store'
-import { ContactsType } from 'store/types/contacts_type'
-import { CoursesType } from 'store/types/courses_type'
+import { ContactsType } from 'store/types/ContactsType'
+import { CoursesType } from 'store/types/CoursesType'
 
 export const selectErrorMessage = (state: RootState): string => state.app.errorMessage
 export const selectIsError = (state: RootState): boolean => state.app.isError

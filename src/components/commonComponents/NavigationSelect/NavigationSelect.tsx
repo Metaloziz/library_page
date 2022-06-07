@@ -3,25 +3,21 @@ import { FC } from 'react'
 import style from './NavigationSelect.module.scss'
 
 import { SectionButton } from 'components/SectionButton'
-
-export type DirectionType = {
-  uuid: number
-  name: string
-}
+import { DirectionType } from 'store/types/DirectionType'
 
 type NavigationDirectionPT = {
   sections: DirectionType[]
   activeSectionId: number
-  handleCurrentCount: (value: number) => void
+  handleCurrentSection: (sectionId: number) => void
 }
 
 export const NavigationSelect: FC<NavigationDirectionPT> = ({
   sections,
   activeSectionId,
-  handleCurrentCount,
+  handleCurrentSection,
 }) => {
-  const setCurrentCount = (directionId: number): void => {
-    handleCurrentCount(directionId)
+  const setCurrentCount = (sectionId: number): void => {
+    handleCurrentSection(sectionId)
   }
 
   return (

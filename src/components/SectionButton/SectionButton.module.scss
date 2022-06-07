@@ -19,11 +19,11 @@
   font-size: 18px;
   line-height: 23px;
 
-  &:focus, &:hover {
+  &:hover {
     color: $dark;
   }
 
-  &:focus:after, &:hover:after {
+  &:hover:after {
     width: 100%;
     left: 0;
   }
@@ -41,7 +41,6 @@
     transition-duration: 400ms;
     transition-property: width, left;
   }
-
 }
 
 .active { // жуткое дублирование, посоветоваться как убрать

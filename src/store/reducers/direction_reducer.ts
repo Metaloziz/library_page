@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { DirectionType } from 'components/NavigationContainer/DirectionNavigation/NavigationSelect'
 import { getDirectionsTC } from 'store/thunks/directions_thunks'
+import { DirectionType } from 'store/types/DirectionType'
 
 export type DirectionInitialStateType = {
   directions: DirectionType[]

@@ -1,5 +1,5 @@
-import { DirectionType } from 'components/NavigationContainer/DirectionNavigation/NavigationSelect'
 import { RootState } from 'store/store'
+import { DirectionType } from 'store/types/DirectionType'
 
 export const selectDirections = (state: RootState): DirectionType[] =>
   state.directions.directions

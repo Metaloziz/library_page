@@ -3,7 +3,7 @@ import { FC } from 'react'
 import style from './CoursePreview.module.scss'
 
 import { COURSES_URL } from 'constants/constants'
-import { CoursesType } from 'store/types/courses_type'
+import { CoursesType } from 'store/types/CoursesType'
 
 export const CoursePreview: FC<{ courses: CoursesType }> = ({ courses }) => {
   const bufferDiv = document.createElement('div')
