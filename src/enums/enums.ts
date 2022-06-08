@@ -28,3 +28,10 @@ export enum DeBounceTimer {
   SEARCH_DELAY = 1500,
   CLOSE_ERROR = 3000,
 }
+
+export enum ImageSize {
+  ORIGINAL = 'original',
+  LARGE = 'HD720',
+  MIDDLE = 'VGA',
+  SMALL = 'QVGA',
+}

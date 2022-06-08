@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { TagsType } from 'api/tags'
 import { getTagsTC } from 'store/thunks/tags_thunks'
+import { TagsType } from 'store/types/TagsType'
 
 export type TagsInitialStateType = {
   tags: TagsType[]

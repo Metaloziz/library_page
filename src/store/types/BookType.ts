@@ -1,4 +1,4 @@
-import { TagsType } from 'api/tags'
+import { TagsType } from 'store/types/TagsType'
 
 export type BookType = {
   uuid: string

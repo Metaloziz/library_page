@@ -1,10 +1,6 @@
 import { instance } from 'api/instance'
 import { RequestSource } from 'enums/enums'
-
-export type TagsType = {
-  uuid: string
-  name: string
-}
+import { TagsType } from 'store/types/TagsType'
 
 export const tagsAPI = {
   getTags: () => instance.get<TagsType[]>(`${RequestSource.TAGS}`),
