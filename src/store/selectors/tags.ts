@@ -1,4 +1,4 @@
 import { RootState } from 'store/store'
-import { TagsType } from 'store/types/TagsType'
+import { TagType } from 'store/types/TagType'
 
-export const selectTags = (state: RootState): TagsType[] => state.tags.tags
+export const selectTags = (state: RootState): TagType[] => state.tags.tags

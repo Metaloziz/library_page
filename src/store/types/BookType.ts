@@ -1,4 +1,4 @@
-import { TagsType } from 'store/types/TagsType'
+import { TagType } from 'store/types/TagType'
 
 export type BookType = {
   uuid: string
@@ -16,6 +16,6 @@ export type BookType = {
   description: string
   local_url: string
   language: string
-  tags: TagsType[]
+  tags: TagType[]
   image_url: string
 }
