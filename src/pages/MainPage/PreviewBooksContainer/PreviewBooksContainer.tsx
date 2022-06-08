@@ -2,12 +2,21 @@ import { FC } from 'react'
 
 import style from './PreviewBooksContainer.module.scss'
 
-export const PreviewBooksContainer: FC = () => (
+import { BASE_URL } from 'constants/constants'
+import { BookType } from 'store/types/BookType'
+
+type PreviewBooksContainerPropsType = {
+  books: BookType[]
+}
+
+export const PreviewBooksContainer: FC<PreviewBooksContainerPropsType> = ({ books }) => (
   <div className={style.container}>
-    <div className={style.item} />
-    <div className={style.item} />
-    <div className={style.item} />
-    <div className={style.item} />
-    <div className={style.item} />
+    {books.map(({ uuid, title, author, image_url }) => (
+      <div key={uuid} className={style.item}>
+        <img alt="" src={BASE_URL + image_url} />
+        <h3>{title}</h3>
+        <h4>{author.full_name}</h4>
+      </div>
+    ))}
   </div>
 )

@@ -31,7 +31,7 @@
   }
 
   div {
-    @include textColumns(5, 16px);
+    @include textColumns(5);
     margin-bottom: 10px;
   }
 

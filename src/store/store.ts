@@ -4,6 +4,7 @@ import thunkMiddleware from 'redux-thunk'
 
 import { appReducer } from 'store/reducers'
 import { authorsReducer } from 'store/reducers/author_reducer'
+import { booksReducer } from 'store/reducers/books_reducer'
 import { contentTypeReducer } from 'store/reducers/content_type_reducer'
 import { directionsReducer } from 'store/reducers/direction_reducer'
 import { tagsReducer } from 'store/reducers/tags_reducer'
@@ -15,6 +16,7 @@ export const store = configureStore({
     contentType: contentTypeReducer,
     authors: authorsReducer,
     tags: tagsReducer,
+    books: booksReducer,
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunkMiddleware),
 })
