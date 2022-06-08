@@ -23,13 +23,9 @@
       width: 150px;
     }
 
-    h3 {
+    h5 {
       @include textColumns(2);
-      font-family: 'IBM Plex Sans', sans-serif;
-      font-style: normal;
-      font-weight: 500;
-      font-size: 20px;
-      line-height: 120%;
+      @include titleH5();
     }
 
     h4 {
@@ -40,7 +36,6 @@
       line-height: 120%;
 
       color: $green;
-
     }
   }
 }

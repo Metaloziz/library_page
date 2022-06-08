@@ -14,7 +14,7 @@ export const PreviewBooksContainer: FC<PreviewBooksContainerPropsType> = ({ book
     {books.map(({ uuid, title, author, image_url }) => (
       <div key={uuid} className={style.item}>
         <img alt="" src={BASE_URL + image_url} />
-        <h3>{title}</h3>
+        <h5>{title}</h5>
         <h4>{author.full_name}</h4>
       </div>
     ))}

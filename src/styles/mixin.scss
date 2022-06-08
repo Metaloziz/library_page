@@ -77,17 +77,23 @@
   font-weight: 600;
   font-size: 36px;
   line-height: 47px;
-
 }
 
-@mixin testPreview($fontSize: 16px) {
+@mixin titleH5 {
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+}
 
+
+@mixin textPreview($fontSize: 16px) {
   font-family: 'IBM Plex Sans', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: $fontSize;
   line-height: 130%;
-
   display: flex;
   align-items: center;
 

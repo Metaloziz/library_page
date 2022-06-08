@@ -3,12 +3,12 @@ import { createSlice } from '@reduxjs/toolkit'
 import { getDirectionsTC } from 'store/thunks/directions_thunks'
 import { DirectionType } from 'store/types/DirectionType'
 
-export type DirectionInitialStateType = {
+export type DirectionsInitialStateType = {
   directions: DirectionType[]
   activeDirection: string
 }
 
-export const initialState: DirectionInitialStateType = {
+export const initialState: DirectionsInitialStateType = {
   directions: [{ uuid: '0', name: '' }],
   activeDirection: '0',
 }

@@ -1,12 +1,12 @@
 import {
-  DirectionInitialStateType,
+  DirectionsInitialStateType,
   directionsReducer,
   setDirectionAC,
-} from 'store/reducers/direction_reducer'
+} from 'store/reducers/directions_reducer'
 import { getDirectionsTC } from 'store/thunks/directions_thunks'
 import { DirectionType } from 'store/types/DirectionType'
 
-let directionInitialState: DirectionInitialStateType
+let directionInitialState: DirectionsInitialStateType
 let newDirections: DirectionType[]
 const newActiveDirection: string = '10'
 

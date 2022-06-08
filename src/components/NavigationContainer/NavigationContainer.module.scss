@@ -11,16 +11,18 @@
 
     .body {
       @include displayContentCenter();
-      @include boxBorder();
       align-items: flex-start;
       flex-direction: column;
       padding: 20px;
       gap: $gap_general;
 
+      div {
+        @include boxBorder();
+      }
+
       h1 {
         @include titleH1();
       }
-
     }
   }
 
@@ -38,5 +40,4 @@
   }
 
   @include paddingMobileMenu();
-
 }

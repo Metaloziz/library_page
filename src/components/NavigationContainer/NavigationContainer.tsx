@@ -10,11 +10,13 @@ import { ContentTypeNavigation } from 'components/NavigationContainer/ContentTyp
 import style from 'components/NavigationContainer/NavigationContainer.module.scss'
 import { TagsNavigation } from 'components/NavigationContainer/TagsNavigation/TagsNavigation'
 import { PreviewBooksContainer } from 'pages/MainPage/PreviewBooksContainer/PreviewBooksContainer'
+import { PreviewVideoContainer } from 'pages/MainPage/PreviewVideosContainer/PreviewVideoContainer'
 import { selectBooks } from 'store/selectors/books'
 import { useAppDispatch } from 'store/store'
 import { getAuthorsTC } from 'store/thunks/authors_thunks'
 import { getDirectionsTC } from 'store/thunks/directions_thunks'
 import { getTagsTC } from 'store/thunks/tags_thunks'
+import { getVideosTC } from 'store/thunks/videos_thunks'
 
 export const NavigationContainer: FC = () => {
   const dispatch = useAppDispatch()
@@ -25,6 +27,7 @@ export const NavigationContainer: FC = () => {
     dispatch(getDirectionsTC())
     dispatch(getAuthorsTC())
     dispatch(getTagsTC())
+    dispatch(getVideosTC())
   }, [])
 
   return (
@@ -39,6 +42,10 @@ export const NavigationContainer: FC = () => {
           <div>
             <h1>Помощь Backend-разработчику</h1>
             <PreviewBooksContainer books={books} />
+          </div>
+          <div>
+            <h1>Видео</h1>
+            <PreviewVideoContainer />
           </div>
         </div>
       </div>
