@@ -1,4 +1,3 @@
-export * from './NavigationContainer'
 export * from './Footer'
 export * from './commonComponents/Button'
 export * from './commonComponents/ErrorComponent'

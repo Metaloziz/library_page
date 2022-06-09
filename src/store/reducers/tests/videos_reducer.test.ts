@@ -1,5 +1,6 @@
-import { VideosInitialStateType, videosReducer } from 'store/reducers/videos_reducer'
+import { videosReducer } from 'store/reducers/videos_reducer'
 import { getVideosTC } from 'store/thunks/videos_thunks'
+import { VideosInitialStateType } from 'store/types/VideosInitialStateType'
 import { VideoType } from 'store/types/VideoType'
 
 let initialState: VideosInitialStateType

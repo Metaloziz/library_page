@@ -1,0 +1,59 @@
+@import "src/styles/variables";
+@import "src/styles/mixin";
+
+.books {
+  @include displayContentCenter();
+  flex-direction: row;
+  width: 100%;
+  height: auto;
+  border-bottom: 1px $gray solid;
+  cursor: pointer;
+  gap: $gap_general;
+
+  img {
+    width: 150px;
+    height: 200px;
+  }
+
+  div {
+    @include displayContentCenter();
+    flex-direction: column;
+    align-items: flex-start;
+    color: $gray;
+    font-weight: 500;
+    width: 100%;
+    margin-bottom: 5px;
+
+    span {
+      @include textColumns(2);
+      font-family: 'IBM Plex Sans', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 120%;
+      text-align: start;
+
+      color: #1C1D25;
+    }
+  }
+
+  h4 {
+    @include textColumns(1);
+    justify-content: flex-start;
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 120%;
+
+    color: $green;
+  }
+
+  span {
+    @include textColumns(3);
+    color: $gray;
+    margin-bottom: 20px;
+  }
+}

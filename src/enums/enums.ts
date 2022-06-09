@@ -1,6 +1,7 @@
 export enum Path {
   DEFAULT = '/',
   MAIN = '/main',
+  CURRENT_BOOK = '/current_book',
 }
 
 export enum RequestSource {

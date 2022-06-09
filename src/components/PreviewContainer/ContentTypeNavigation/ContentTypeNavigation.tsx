@@ -2,7 +2,8 @@ import { FC } from 'react'
 
 import { useSelector } from 'react-redux'
 
-import style from 'components/NavigationContainer/ContentTypeNavigation/ContentTypeNavigation.module.scss'
+import style from './ContentTypeNavigation.module.scss'
+
 import { SectionButton } from 'components/SectionButton'
 import {
   setAllContentTypeAC,

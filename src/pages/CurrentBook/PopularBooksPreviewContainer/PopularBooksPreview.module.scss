@@ -1,0 +1,24 @@
+@import "src/styles/variables";
+@import "src/styles/mixin";
+
+.container {
+  @include displayContentCenter();
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 350px;
+  height: auto;
+
+  h5 {
+    @include displayContentCenter();
+    @include titleH5();
+    color: $gray;
+  }
+
+  @media screen and (max-width: $news_container_width) {
+
+    & {
+      display: none;
+    }
+  }
+}

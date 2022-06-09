@@ -1,12 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 import { getVideosTC } from 'store/thunks/videos_thunks'
-import { VideoType } from 'store/types/VideoType'
-import { convertTitle } from 'utils/convertTitle'
-
-export type VideosInitialStateType = {
-  videos: VideoType[]
-}
+import { VideosInitialStateType } from 'store/types/VideosInitialStateType'
+import { convertTitle } from 'utils/convert_title'
 
 export const initialState: VideosInitialStateType = {
   videos: [],
