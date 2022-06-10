@@ -3,9 +3,10 @@ import { useDispatch } from 'react-redux'
 import thunkMiddleware from 'redux-thunk'
 
 import { appReducer } from 'store/reducers'
+import { articlesReducer } from 'store/reducers/articles_reducer'
 import { authorsReducer } from 'store/reducers/author_reducer'
 import { booksReducer } from 'store/reducers/books_reducer'
-import { contentTypeReducer } from 'store/reducers/content_type_reducer'
+import { contentTypeReducer } from 'store/reducers/content_types_reducer'
 import { directionsReducer } from 'store/reducers/directions_reducer'
 import { tagsReducer } from 'store/reducers/tags_reducer'
 import { videosReducer } from 'store/reducers/videos_reducer'
@@ -19,6 +20,7 @@ export const store = configureStore({
     tags: tagsReducer,
     books: booksReducer,
     videos: videosReducer,
+    articles: articlesReducer,
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(thunkMiddleware),
 })

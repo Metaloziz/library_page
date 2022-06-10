@@ -8,8 +8,8 @@ import { SectionButton } from 'components/SectionButton'
 import {
   setAllContentTypeAC,
   setContentTypeAC,
-} from 'store/reducers/content_type_reducer'
-import { selectContentType } from 'store/selectors/contentType'
+} from 'store/reducers/content_types_reducer'
+import { selectContentType } from 'store/selectors/content_types'
 import { useAppDispatch } from 'store/store'
 import { ActionPayloadType } from 'store/types/ContentType'
 

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 
-import { videoAPI } from 'api/video'
+import { videosAPI } from 'api/video'
 import { StatusCode } from 'enums'
 import { setIsLoadingStatusAC } from 'store/reducers'
 import { ResponseErrorType } from 'store/types'
@@ -12,7 +12,7 @@ export const getVideosTC = createAsyncThunk(
     try {
       dispatch(setIsLoadingStatusAC(true))
 
-      const { data, status } = await videoAPI.getVideo()
+      const { data, status } = await videosAPI.getVideos()
       if (status === StatusCode.GET_VIDEOS_SUCCESS) {
         return data
       }

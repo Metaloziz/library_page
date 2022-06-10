@@ -2,7 +2,7 @@ import {
   contentTypeReducer,
   setAllContentTypeAC,
   setContentTypeAC,
-} from 'store/reducers/content_type_reducer'
+} from 'store/reducers/content_types_reducer'
 import { ContentType } from 'store/types/ContentType'
 
 let contentTypeInitialState: ContentType

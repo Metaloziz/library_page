@@ -3,5 +3,5 @@ import { RequestSource } from 'enums/enums'
 import { AuthorType } from 'store/reducers/author_reducer'
 
 export const authorsAPI = {
-  getAllAuthors: () => instance.get<AuthorType[]>(`${RequestSource.AUTHORS}`),
+  getAuthors: () => instance.get<AuthorType[]>(`${RequestSource.AUTHORS}`),
 }

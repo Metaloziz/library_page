@@ -20,7 +20,7 @@ const mainSlice = createSlice({
 
       Object.keys(state).forEach(key => {
         // @ts-ignore
-        state[key] = !(isBooks && isVideo && isArticle)
+        state[key] = !(isBooks && isVideo && isArticle) // todo убрать ts-ignore
       })
     },
   },

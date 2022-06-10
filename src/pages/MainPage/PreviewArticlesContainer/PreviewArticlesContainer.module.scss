@@ -1,0 +1,23 @@
+@import "src/styles/mixin";
+@import "src/styles/variables";
+
+
+.container {
+  @include displayContentCenter();
+  padding: 5px;
+  gap: $gap_general;
+  overflow-x: scroll;
+  width: 700px;
+
+  .item {
+
+    img {
+      width: 200px;
+      height: 150px;
+    }
+
+    h5 {
+      @include titleH5();
+    }
+  }
+}

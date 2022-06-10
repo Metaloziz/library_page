@@ -10,6 +10,7 @@ export enum RequestSource {
   TAGS = '/tags',
   BOOKS = '/books',
   VIDEO = '/videos',
+  ARTICLES = '/articles',
 }
 
 export enum RequestCommonData {
@@ -22,6 +23,7 @@ export enum StatusCode {
   GET_AUTHORS_SUCCESS = 200,
   GET_TAGS_SUCCESS = 200,
   GET_VIDEOS_SUCCESS = 200,
+  GET_ARTICLES_SUCCESS = 200,
 
   GET_COURSES_SUCCESS = 200,
   GET_CONTACTS_SUCCESS = 200,
