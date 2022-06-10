@@ -1,23 +1,31 @@
 import { FC } from 'react'
 
-import { useSelector } from 'react-redux'
-
 import { BASE_URL } from 'constants/constants'
 import style from 'pages/MainPage/PreviewArticlesContainer/PreviewArticlesContainer.module.scss'
-import { selectArticles } from 'store/selectors/articles'
+import { ArticleType } from 'store/types/ArticleType'
 import { convertTitle } from 'utils/convert_title'
 
-export const PreviewArticlesContainer: FC = () => {
-  const articles = useSelector(selectArticles)
-
-  return (
-    <div className={style.container}>
-      {articles.map(({ title, image_url, uuid }) => (
-        <div key={uuid} className={style.item}>
-          <img alt="" src={BASE_URL + image_url} />
-          <h5>{convertTitle(title)}</h5>
-        </div>
-      ))}
-    </div>
-  )
+type PreviewArticlesContainerPT = {
+  articles: ArticleType[]
+  setCurrentArticleHandle: (articleId: string) => void
 }
+
+export const PreviewArticlesContainer: FC<PreviewArticlesContainerPT> = ({
+  setCurrentArticleHandle,
+  articles,
+}) => (
+  <div className={style.container}>
+    {articles.map(({ title, image_url, uuid }) => (
+      <div
+        role="button"
+        tabIndex={0}
+        key={uuid}
+        className={style.item}
+        onClick={() => setCurrentArticleHandle(uuid)}
+      >
+        <img alt="" src={BASE_URL + image_url} />
+        <h5>{convertTitle(title)}</h5>
+      </div>
+    ))}
+  </div>
+)

@@ -14,7 +14,9 @@ import { Path } from 'enums'
 import { PreviewArticlesContainer } from 'pages/MainPage/PreviewArticlesContainer/PreviewArticlesContainer'
 import { PreviewBooksContainer } from 'pages/MainPage/PreviewBooksContainer/PreviewBooksContainer'
 import { PreviewVideoContainer } from 'pages/MainPage/PreviewVideosContainer/PreviewVideoContainer'
+import { setCurrentArticleAC } from 'store/reducers/articles_reducer'
 import { setCurrentBookAC } from 'store/reducers/books_reducer'
+import { selectArticles } from 'store/selectors/articles'
 import { selectBooks } from 'store/selectors/books'
 import { useAppDispatch } from 'store/store'
 import { getArticlesTC } from 'store/thunks/articles_thunks'
@@ -29,6 +31,7 @@ export const PreviewContainer: FC = () => {
   const navigate = useNavigate()
 
   const books = useSelector(selectBooks)
+  const articles = useSelector(selectArticles)
 
   useEffect(() => {
     dispatch(getDirectionsTC())
@@ -45,6 +48,11 @@ export const PreviewContainer: FC = () => {
     dispatch(setCurrentBookAC(bookId))
   }, [])
 
+  const setCurrentArticleHandle = useCallback((articleId: string): void => {
+    navigate(Path.CURRENT_ARTICLE)
+    dispatch(setCurrentArticleAC(articleId))
+  }, [])
+
   return (
     <div className={style.container}>
       <div className={style.preview}>
@@ -53,7 +61,7 @@ export const PreviewContainer: FC = () => {
           <div>
             <h1>Помощь Frontend-разработчику</h1>
             <PreviewBooksContainer
-              books={books}
+              books={books} // todo где красивее вставлять useSelector - внутри или снаружи компоненты ?
               setCurrentBookHandle={currentBookRouteHandle}
             />
           </div>
@@ -70,7 +78,10 @@ export const PreviewContainer: FC = () => {
           </div>
           <div>
             <h1>Статьи</h1>
-            <PreviewArticlesContainer />
+            <PreviewArticlesContainer
+              articles={articles}
+              setCurrentArticleHandle={setCurrentArticleHandle}
+            />
           </div>
         </div>
       </div>
