@@ -23,3 +23,21 @@ export const getArticlesTC = createAsyncThunk(
     }
   },
 )
+
+export const loadArticleFileTC = createAsyncThunk(
+  'articles/loadArticleFileTC',
+  async (_, { dispatch }) => {
+    try {
+      dispatch(setIsLoadingStatusAC(true))
+
+      const response = await articlesAPI.loadArticleFile()
+      if (response.status === StatusCode.GET_DIRECTIONS_SUCCESS) {
+        return response.data
+      }
+    } catch (error) {
+      setThunkError(dispatch, error as ResponseErrorType)
+    } finally {
+      dispatch(setIsLoadingStatusAC(false))
+    }
+  },
+)

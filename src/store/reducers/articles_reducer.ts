@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { getArticlesTC } from 'store/thunks/articles_thunks'
+import { getArticlesTC, loadArticleFileTC } from 'store/thunks/articles_thunks'
 import { ArticlesInitialStateType } from 'store/types/ArticlesInitialStateType'
 import { findElement } from 'utils'
 
@@ -45,6 +45,7 @@ export const initialState: ArticlesInitialStateType = {
     language: '',
     tags: [{ uuid: '', name: '' }],
   },
+  file: null,
 }
 
 const mainSlice = createSlice({
@@ -59,6 +60,11 @@ const mainSlice = createSlice({
     builder.addCase(getArticlesTC.fulfilled, (state, action) => {
       if (action.payload) {
         state.articles = action.payload
+      }
+    })
+    builder.addCase(loadArticleFileTC.fulfilled, (state, action) => {
+      if (action.payload) {
+        state.file = action.payload
       }
     })
   },

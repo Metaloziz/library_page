@@ -59,6 +59,7 @@ beforeEach(() => {
       language: '',
       tags: [{ uuid: '', name: '' }],
     },
+    file: null,
   }
 
   newArticles = [
