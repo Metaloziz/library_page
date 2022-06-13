@@ -2,18 +2,14 @@ import { FC } from 'react'
 
 import DocViewer, { DocViewerRenderers } from 'react-doc-viewer'
 
+import style from './ArticleBody.module.scss'
+
 import { NavLinkComponent } from 'components'
 import { BASE_URL } from 'constants/constants'
 import { Path } from 'enums'
-import style from 'pages/CurrentArticle/ArticleBody/ArticleBody.module.scss'
-import { ArticleType } from 'store/types/ArticleType'
+import { ArticleBodyPropsType } from 'store/types/ArticleBodyPropsType'
 import { convertDateView } from 'utils'
 import { convertTitle } from 'utils/convert_title'
-
-type ArticleBodyPropsType = {
-  article: ArticleType
-  isAdmin: boolean
-}
 
 export const ArticleBody: FC<ArticleBodyPropsType> = ({
   article: { title, edition_date, image_url, description },

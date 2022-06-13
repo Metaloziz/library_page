@@ -2,13 +2,9 @@ import { FC } from 'react'
 
 import style from '../PopularArticlePreview.module.scss'
 
-import { ArticleType } from 'store/types/ArticleType'
+import { PopularNewsPreviewBodyPropsType } from 'store/types/PopularNewsPreviewBodyPropsType'
 import { convertTitle } from 'utils/convert_title'
 
-type PopularNewsPreviewBodyPropsType = {
-  setCurrentArticle: (articleId: string) => void
-  article: ArticleType
-}
 export const PopularArticlePreviewBody: FC<PopularNewsPreviewBodyPropsType> = ({
   setCurrentArticle,
   article,
