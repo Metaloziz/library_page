@@ -2,9 +2,8 @@ import { FC } from 'react'
 
 import { useSelector } from 'react-redux'
 
-import { Footer, MobileNavigation, NavLinkComponent, SearchField } from 'components'
+import { Footer, MobileNavigation, SearchField } from 'components'
 import { PREVIEW_ITEMS_COUNT } from 'constants/constants'
-import { Path } from 'enums'
 import { BookBody } from 'pages/CurrentBook/BookBody/BookBody'
 import style from 'pages/CurrentBook/CurrentBook.module.scss'
 import { PopularBooksPreview } from 'pages/CurrentBook/PopularBooksPreviewContainer/PopularBooksPreview'
@@ -29,12 +28,10 @@ const CurrentBook: FC = () => {
       <div className={style.bodyContainer}>
         <h1>Библиотека / книги</h1>
         <SearchField />
-        <NavLinkComponent nameButton="на главную" path={Path.MAIN} />
         <div className={style.body}>
           <BookBody />
           <PopularBooksPreview books={previewBooks} setCurrentBook={setCurrentBook} />
         </div>
-
         <Footer />
       </div>
     </div>

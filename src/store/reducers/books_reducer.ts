@@ -4,7 +4,6 @@ import { getBooksTC } from 'store/thunks/books_thunks'
 import { BooksInitialStateType } from 'store/types/BooksInitialStateType'
 import { findElement } from 'utils'
 import { convertImagesUrl } from 'utils/convert_images_url'
-import { convertTitle } from 'utils/convert_title'
 
 export const initialState: BooksInitialStateType = {
   books: [],
@@ -51,7 +50,6 @@ const mainSlice = createSlice({
       if (action.payload) {
         state.books = action.payload.map(book => ({
           ...book,
-          title: convertTitle(book.title),
           image_url: convertImagesUrl(book.image_url),
         }))
       }

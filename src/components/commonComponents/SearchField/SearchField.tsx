@@ -8,7 +8,6 @@ import { DebounceSearchField } from 'components/commonComponents/DebounceSearchF
 import { Path } from 'enums'
 
 export const SearchField: FC = () => {
-  // const dispatch = useAppDispatch()
   const navigate = useNavigate()
 
   const getNewsByKeyWord = (): void => {

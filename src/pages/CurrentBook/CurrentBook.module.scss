@@ -25,23 +25,6 @@
       gap: 20px;
     }
 
-    .comments {
-      height: 100px;
-      width: auto;
-    }
-
-    .footer {
-      @include displayContentCenter();
-      align-items: flex-start;
-      flex-direction: row;
-      justify-content: space-between;
-
-      .preview {
-        width: auto;
-        height: 300px;
-      }
-    }
-
     @media screen and (max-width: $width_menu) {
       & {
         margin-top: 60px;
