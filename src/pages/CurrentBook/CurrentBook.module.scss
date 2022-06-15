@@ -9,12 +9,16 @@
   flex-grow: 10;
   overflow-y: scroll;
   height: 100vh;
+  margin-top: 30px;
 
   h1 {
     @include titleH1();
   }
 
   .bodyContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
     padding: 2% 1% 5% 2%;
 
     .body {

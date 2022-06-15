@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux'
 
 import style from './PreviewVideoContainer.module.scss'
 
+import playIcon from 'assets/images/common/playIcon.svg'
 import videoPreview from 'assets/images/header.png'
-import { BASE_URL } from 'constants/constants'
 import { selectVideos } from 'store/selectors/videos'
 
 export const PreviewVideoContainer: FC = () => {
@@ -13,13 +13,14 @@ export const PreviewVideoContainer: FC = () => {
 
   return (
     <div className={style.container}>
-      {videos.map(({ uuid, title, local_url }) => (
+      {videos.map(({ uuid, title }) => (
         <div key={uuid} className={style.item}>
-          <video controls poster={videoPreview}>
-            <source src={`${BASE_URL + local_url}`} type="video/mp4" />
-            <track kind="captions" src={`${BASE_URL + local_url}`} />
-          </video>
-
+          <div className={style.body}>
+            <img src={videoPreview} alt="" />
+            <div>
+              <img className={style.icon} src={playIcon} alt="" />
+            </div>
+          </div>
           <h5>{title}</h5>
         </div>
       ))}

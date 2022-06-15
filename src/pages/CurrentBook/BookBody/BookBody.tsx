@@ -8,6 +8,7 @@ import { Button, NavLinkComponent } from 'components'
 import { BASE_URL } from 'constants/constants'
 import { Path } from 'enums'
 import { selectBook } from 'store/selectors/books'
+import { convertTitle } from 'utils/convert_title'
 import { separateYearCreation } from 'utils/separate_year_creation'
 import { setDownloadBookUrl } from 'utils/setDownloadBookUrl'
 
@@ -19,8 +20,8 @@ export const BookBody: FC = () => {
     <div className={style.container}>
       <img alt="" src={BASE_URL + image_url} />
       <div className={style.body}>
-        <h3>{title}</h3>
-        <h4>год издания: {separateYearCreation(edition_date)}</h4>
+        <h3>{convertTitle(title)}</h3>
+        <h4>{separateYearCreation(edition_date)}</h4>
         <h5>{author.full_name}</h5>
         <div>
           <p>Описание</p>

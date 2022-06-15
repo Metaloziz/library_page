@@ -58,25 +58,25 @@ export const PreviewContainer: FC = () => {
       <div className={style.preview}>
         <SearchField />
         <div className={style.body}>
-          <div>
+          <div className={style.block}>
             <h1>Помощь Frontend-разработчику</h1>
             <PreviewBooksContainer
               books={books} // todo где красивее вставлять useSelector - внутри или снаружи компоненты ?
               setCurrentBookHandle={currentBookRouteHandle}
             />
           </div>
-          <div>
+          <div className={style.block}>
             <h1>Помощь Backend-разработчику</h1>
             <PreviewBooksContainer
               books={books}
               setCurrentBookHandle={currentBookRouteHandle}
             />
           </div>
-          <div>
+          <div className={style.block}>
             <h1>Видео</h1>
             <PreviewVideoContainer />
           </div>
-          <div>
+          <div className={style.block}>
             <h1>Статьи</h1>
             <PreviewArticlesContainer
               articles={articles}

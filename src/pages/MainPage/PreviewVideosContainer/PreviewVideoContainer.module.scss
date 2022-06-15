@@ -1,23 +1,61 @@
 @import "src/styles/mixin";
 @import "src/styles/variables";
 
-
 .container {
   @include displayContentCenter();
-  padding: 5px;
+  padding: $gap_general;
   gap: $gap_general;
   overflow-x: scroll;
-  width: 700px;
+  width: 800px;
+  cursor: pointer;
 
   .item {
+    @include boxBorder();
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    width: 500px;
 
-    video {
-      width: 300px;
-      height: 300px;
+
+    .body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border-radius: 10px;
+      position: relative;
+
+      img {
+        width: 270px;
+      }
+
+      div {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+
+        .icon {
+          width: 100px;
+          transition: all ease 500ms;
+        }
+      }
     }
 
     h5 {
       @include titleH5();
+    }
+  }
+
+  &:hover {
+
+    .item { // todo как упростить ?
+      .body {
+        div {
+          .icon {
+            width: 120px;
+          }
+        }
+      }
     }
   }
 }

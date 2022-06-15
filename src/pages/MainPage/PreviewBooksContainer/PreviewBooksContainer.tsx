@@ -4,6 +4,7 @@ import style from './PreviewBooksContainer.module.scss'
 
 import { BASE_URL } from 'constants/constants'
 import { PreviewBooksContainerPropsType } from 'store/types/PreviewBooksContainerPropsType'
+import { convertTitle } from 'utils/convert_title'
 
 export const PreviewBooksContainer: FC<PreviewBooksContainerPropsType> = ({
   books,
@@ -19,7 +20,7 @@ export const PreviewBooksContainer: FC<PreviewBooksContainerPropsType> = ({
         onClick={() => setCurrentBookHandle(uuid)}
       >
         <img alt="" src={BASE_URL + image_url} />
-        <h5>{title}</h5>
+        <h5>{convertTitle(title)}</h5>
         <h4>{author.full_name}</h4>
       </div>
     ))}
