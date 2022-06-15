@@ -9,6 +9,7 @@ export type VideoType = {
   }
   difficulty: string
   local_url: string
+  web_url: string
   language: string
   tags: TagType[]
 }

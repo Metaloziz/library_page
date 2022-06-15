@@ -3,6 +3,7 @@ export enum Path {
   MAIN = '/main',
   CURRENT_BOOK = '/current_book',
   CURRENT_ARTICLE = '/current_article',
+  CURRENT_VIDEO = '/current_video',
 }
 
 export enum RequestSource {

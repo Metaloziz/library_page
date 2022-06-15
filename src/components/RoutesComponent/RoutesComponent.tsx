@@ -6,6 +6,7 @@ import { PageLoader, ProtectedRoute } from 'components/commonComponents'
 import { Path } from 'enums'
 import CurrentArticle from 'pages/CurrentArticle/CurrentArticle'
 import CurrentBook from 'pages/CurrentBook/CurrentBook'
+import CurrentVideo from 'pages/CurrentVideo/CurrentVideo'
 
 const MainPage = lazy(() => import('../../pages/MainPage/MainPage'))
 
@@ -18,6 +19,7 @@ export const RoutesComponent: FC = () => (
       <Route path={Path.MAIN} element={<MainPage />} />
       <Route path={Path.CURRENT_BOOK} element={<CurrentBook />} />
       <Route path={Path.CURRENT_ARTICLE} element={<CurrentArticle />} />
+      <Route path={Path.CURRENT_VIDEO} element={<CurrentVideo />} />
       <Route element={<ProtectedRoute redirectPath={Path.MAIN} />} />
       <Route path="*" element={<Component404 />} />
     </Routes>

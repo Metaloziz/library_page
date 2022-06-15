@@ -1,17 +1,35 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { getVideosTC } from 'store/thunks/videos_thunks'
 import { VideosInitialStateType } from 'store/types/VideosInitialStateType'
+import { findElement } from 'utils'
 import { convertTitle } from 'utils/convert_title'
 
 export const initialState: VideosInitialStateType = {
   videos: [],
+  currentVideo: {
+    uuid: '',
+    title: '',
+    direction: {
+      uuid: '',
+      name: '',
+    },
+    difficulty: '',
+    local_url: '',
+    web_url: '',
+    language: '',
+    tags: [],
+  },
 }
 
 const mainSlice = createSlice({
   name: 'videos',
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrentVideoAC: (state, action: PayloadAction<string>) => {
+      state.currentVideo = findElement(state.videos, action.payload)
+    },
+  },
   extraReducers: builder => {
     builder.addCase(getVideosTC.fulfilled, (state, action) => {
       if (action.payload) {
@@ -24,4 +42,5 @@ const mainSlice = createSlice({
   },
 })
 
+export const { setCurrentVideoAC } = mainSlice.actions
 export const videosReducer = mainSlice.reducer

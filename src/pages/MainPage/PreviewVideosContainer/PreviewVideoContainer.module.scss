@@ -4,7 +4,7 @@
 .container {
   @include displayContentCenter();
   padding: $gap_general;
-  gap: $gap_general;
+  gap: 30px;
   overflow-x: scroll;
   width: 800px;
   cursor: pointer;
@@ -16,6 +16,7 @@
     flex-direction: column;
     justify-content: center;
     width: 500px;
+    padding: 10px;
 
 
     .body {
@@ -25,36 +26,31 @@
       border-radius: 10px;
       position: relative;
 
-      img {
+      .preview {
         width: 270px;
+        opacity: 0.7;
+        border-radius: 10px;
       }
 
-      div {
+      .icon {
         position: absolute;
         top: 50%;
         transform: translate(0, -50%);
-
-        .icon {
-          width: 100px;
-          transition: all ease 500ms;
-        }
+        width: 90px;
+        transition: all ease 200ms;
+        opacity: 1;
       }
     }
 
     h5 {
       @include titleH5();
+      margin: 10px 0 0 5px;
     }
-  }
 
-  &:hover {
+    &:hover {
 
-    .item { // todo как упростить ?
-      .body {
-        div {
-          .icon {
-            width: 120px;
-          }
-        }
+      .icon {
+        width: 100px;
       }
     }
   }

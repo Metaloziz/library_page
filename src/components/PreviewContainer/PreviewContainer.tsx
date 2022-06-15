@@ -16,8 +16,10 @@ import { PreviewBooksContainer } from 'pages/MainPage/PreviewBooksContainer/Prev
 import { PreviewVideoContainer } from 'pages/MainPage/PreviewVideosContainer/PreviewVideoContainer'
 import { setCurrentArticleAC } from 'store/reducers/articles_reducer'
 import { setCurrentBookAC } from 'store/reducers/books_reducer'
+import { setCurrentVideoAC } from 'store/reducers/videos_reducer'
 import { selectArticles } from 'store/selectors/articles'
 import { selectBooks } from 'store/selectors/books'
+import { selectVideos } from 'store/selectors/videos'
 import { useAppDispatch } from 'store/store'
 import { getArticlesTC } from 'store/thunks/articles_thunks'
 import { getAuthorsTC } from 'store/thunks/authors_thunks'
@@ -32,6 +34,7 @@ export const PreviewContainer: FC = () => {
 
   const books = useSelector(selectBooks)
   const articles = useSelector(selectArticles)
+  const videos = useSelector(selectVideos)
 
   useEffect(() => {
     dispatch(getDirectionsTC())
@@ -51,6 +54,11 @@ export const PreviewContainer: FC = () => {
   const setCurrentArticleHandle = useCallback((articleId: string): void => {
     navigate(Path.CURRENT_ARTICLE)
     dispatch(setCurrentArticleAC(articleId))
+  }, [])
+
+  const setCurrentVideoHandle = useCallback((videoId: string): void => {
+    navigate(Path.CURRENT_VIDEO)
+    dispatch(setCurrentVideoAC(videoId))
   }, [])
 
   return (
@@ -74,7 +82,10 @@ export const PreviewContainer: FC = () => {
           </div>
           <div className={style.block}>
             <h1>Видео</h1>
-            <PreviewVideoContainer />
+            <PreviewVideoContainer
+              videos={videos}
+              setCurrentVideoHandle={setCurrentVideoHandle}
+            />
           </div>
           <div className={style.block}>
             <h1>Статьи</h1>

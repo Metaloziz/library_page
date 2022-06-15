@@ -1,0 +1,29 @@
+@import "src/styles/variables";
+@import "src/styles/mixin";
+
+.container {
+  @include displayContentCenter();
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 350px;
+  height: auto;
+  margin-top: 103px;
+
+  h3 {
+    @include displayContentCenter();
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 120%;
+    color: $gray;
+  }
+
+  @media screen and (max-width: $news_container_width) {
+
+    & {
+      display: none;
+    }
+  }
+}
