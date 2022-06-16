@@ -1,4 +1,4 @@
-import { AuthorType } from 'store/reducers/author_reducer'
+import { AuthorType } from 'store/types/AuthorType'
 
 export type AuthorInitialStateType = {
   authors: AuthorType[]

@@ -6,12 +6,12 @@ import { ResponseErrorType } from 'store/types'
 export const setThunkError = (dispatch: Dispatch, errorData: ResponseErrorType): void => {
   const {
     response: {
-      data: { message },
+      data: { ErrorMsg },
     },
   } = errorData
 
-  if (message) {
-    dispatch(setErrorTrueAC(message))
+  if (ErrorMsg) {
+    dispatch(setErrorTrueAC(ErrorMsg))
   } else {
     dispatch(setErrorTrueAC('some error'))
   }

@@ -1,12 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { getAuthorsTC } from 'store/thunks/authors_thunks'
+import { getAuthorsTC, getAuthorTC } from 'store/thunks/authors_thunks'
 import { AuthorInitialStateType } from 'store/types/AuthorInitialStateType'
-
-export type AuthorType = {
-  uuid: string
-  full_name: string
-}
 
 export const initialState: AuthorInitialStateType = {
   authors: [],
@@ -20,6 +15,11 @@ const mainSlice = createSlice({
     builder.addCase(getAuthorsTC.fulfilled, (state, action) => {
       if (action.payload) {
         state.authors = action.payload
+      }
+    })
+    builder.addCase(getAuthorTC.fulfilled, (state, action) => {
+      if (action.payload) {
+        state.authors.push(action.payload)
       }
     })
   },

@@ -1,3 +1,3 @@
 export type ResponseErrorType = {
-  response: { data: { message: string } }
+  response: { data: { ErrorMsg: string } }
 }
