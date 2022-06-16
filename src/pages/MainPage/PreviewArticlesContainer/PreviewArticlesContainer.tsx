@@ -1,6 +1,6 @@
 import { FC } from 'react'
 
-import { BASE_URL } from 'constants/constants'
+import { BASE_IMAGE_URL } from 'constants/constants'
 import style from 'pages/MainPage/PreviewArticlesContainer/PreviewArticlesContainer.module.scss'
 import { ArticleType } from 'store/types/ArticleType'
 import { convertTitle } from 'utils/convert_title'
@@ -23,7 +23,7 @@ export const PreviewArticlesContainer: FC<PreviewArticlesContainerPT> = ({
         className={style.item}
         onClick={() => setCurrentArticleHandle(uuid)}
       >
-        <img alt="" src={BASE_URL + image_url} />
+        <img alt="" src={BASE_IMAGE_URL + image_url} />
         <h5>{convertTitle(title)}</h5>
       </div>
     ))}

@@ -3,10 +3,9 @@ import { FC } from 'react'
 import style from './ArticleBody.module.scss'
 
 import { NavLinkComponent } from 'components'
-import { BASE_URL } from 'constants/constants'
+import { BASE_IMAGE_URL } from 'constants/constants'
 import { Path } from 'enums'
 import { ArticleBodyPropsType } from 'store/types/ArticleBodyPropsType'
-import { convertDateView } from 'utils'
 import { convertTitle } from 'utils/convert_title'
 
 export const ArticleBody: FC<ArticleBodyPropsType> = ({
@@ -15,15 +14,15 @@ export const ArticleBody: FC<ArticleBodyPropsType> = ({
 }) => (
   <div className={style.container}>
     <div className={style.header}>
-      <div className={style.date}>{convertDateView(edition_date)}</div>
       <NavLinkComponent nameButton="на главную" path={Path.MAIN} />
       {isAdmin && <NavLinkComponent nameButton="редактировать" path={Path.MAIN} />}
       <div>
         <h1>{convertTitle(title)}</h1>
       </div>
+      <div className={style.date}>{edition_date}</div>
     </div>
     <div className={style.body}>
-      <img alt="logo" src={BASE_URL + image_url} />
+      <img alt="logo" src={BASE_IMAGE_URL + image_url} />
       <div className={style.description}>{description}</div>
     </div>
   </div>
