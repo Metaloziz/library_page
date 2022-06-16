@@ -1,5 +1,6 @@
 // base url for image
 export const BASE_IMAGE_URL = 'http://localhost:1500'
+// export const BASE_VIDEO_URL = 'http://localhost:1000'
 
 export const COURSES_URL = 'https://itec.pythonanywhere.com/#upcoming__title'
 

@@ -3,7 +3,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { getBooksTC } from 'store/thunks/books_thunks'
 import { BooksInitialStateType } from 'store/types/BooksInitialStateType'
 import { findElement } from 'utils'
-import { convertImagesUrl } from 'utils/convert_images_url'
 
 export const initialState: BooksInitialStateType = {
   books: [],
@@ -48,10 +47,7 @@ const mainSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(getBooksTC.fulfilled, (state, action) => {
       if (action.payload) {
-        state.books = action.payload.map(book => ({
-          ...book,
-          image_url: convertImagesUrl(book.image_url),
-        }))
+        state.books = action.payload
       }
     })
   },

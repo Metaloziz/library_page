@@ -8,6 +8,7 @@ export type VideoType = {
     name: string
   }
   difficulty: string
+  description: string
   local_url: string
   web_url: string
   language: string

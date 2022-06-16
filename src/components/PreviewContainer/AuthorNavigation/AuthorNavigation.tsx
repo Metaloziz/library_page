@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, useEffect } from 'react'
 
 import { useSelector } from 'react-redux'
 
@@ -6,9 +6,16 @@ import style from './AuthorNavigation.module.scss'
 
 import { SectionButton } from 'components/SectionButton'
 import { selectAuthors } from 'store/selectors/authors'
+import { useAppDispatch } from 'store/store'
+import { getAuthorsTC } from 'store/thunks/authors_thunks'
 
 export const AuthorNavigation: FC = () => {
+  const dispatch = useAppDispatch()
   const authors = useSelector(selectAuthors)
+
+  useEffect(() => {
+    dispatch(getAuthorsTC())
+  }, [])
 
   return (
     <div className={style.container}>

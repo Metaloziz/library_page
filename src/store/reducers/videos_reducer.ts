@@ -3,7 +3,6 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { getVideosTC } from 'store/thunks/videos_thunks'
 import { VideosInitialStateType } from 'store/types/VideosInitialStateType'
 import { findElement } from 'utils'
-import { convertTitle } from 'utils/convert_title'
 
 export const initialState: VideosInitialStateType = {
   videos: [],
@@ -15,6 +14,7 @@ export const initialState: VideosInitialStateType = {
       name: '',
     },
     difficulty: '',
+    description: '',
     local_url: '',
     web_url: '',
     language: '',
@@ -33,10 +33,7 @@ const mainSlice = createSlice({
   extraReducers: builder => {
     builder.addCase(getVideosTC.fulfilled, (state, action) => {
       if (action.payload) {
-        state.videos = action.payload.map(video => ({
-          ...video,
-          title: convertTitle(video.title),
-        }))
+        state.videos = action.payload
       }
     })
   },

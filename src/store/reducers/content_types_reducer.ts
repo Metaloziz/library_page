@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { ActionPayloadType, ContentType } from 'store/types/ContentType'
+import { ActionPayloadType, ContentNameType, ContentType } from 'store/types/ContentType'
 
 export const initialState: ContentType = {
   isArticle: false,
@@ -19,8 +19,7 @@ const mainSlice = createSlice({
       const { isBooks, isVideo, isArticle } = state
 
       Object.keys(state).forEach(key => {
-        // @ts-ignore
-        state[key] = !(isBooks && isVideo && isArticle) // todo убрать ts-ignore
+        state[key as ContentNameType] = !(isBooks && isVideo && isArticle)
       })
     },
   },
