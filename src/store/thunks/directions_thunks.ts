@@ -5,6 +5,7 @@ import { StatusCode } from 'enums'
 import { setIsLoadingStatusAC } from 'store/reducers'
 import { ResponseErrorType } from 'store/types'
 import { DirectionNameType } from 'store/types/DirectionNameType'
+import { DirectionType } from 'store/types/DirectionType'
 import { setThunkError } from 'utils'
 import { separateId } from 'utils/separate_id'
 
@@ -54,6 +55,24 @@ export const postDirectionsTC = createAsyncThunk(
       if (status === StatusCode.POST_DIRECTIONS_SUCCESS) {
         const directionId = separateId(data.infoMsg)
         dispatch(getDirectionTC(directionId))
+      }
+    } catch (error) {
+      setThunkError(dispatch, error as ResponseErrorType)
+    } finally {
+      dispatch(setIsLoadingStatusAC(false))
+    }
+  },
+)
+
+export const updateDirectionTC = createAsyncThunk(
+  'directions/updateDirectionTC',
+  async (direction: DirectionType, { dispatch }) => {
+    try {
+      dispatch(setIsLoadingStatusAC(true))
+
+      const { status } = await directionsAPI.updateDirection(direction)
+      if (status === StatusCode.UPDATE_DIRECTION_SUCCESS) {
+        return direction
       }
     } catch (error) {
       setThunkError(dispatch, error as ResponseErrorType)

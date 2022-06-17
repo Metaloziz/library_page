@@ -1,7 +1,12 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { getDirectionsTC, getDirectionTC } from 'store/thunks/directions_thunks'
+import {
+  getDirectionsTC,
+  getDirectionTC,
+  updateDirectionTC,
+} from 'store/thunks/directions_thunks'
 import { DirectionsInitialStateType } from 'store/types/DirectionsInitialStateType'
+import { DirectionType } from 'store/types/DirectionType'
 
 export const initialState: DirectionsInitialStateType = {
   directions: [{ uuid: '0', name: '' }],
@@ -27,6 +32,18 @@ const mainSlice = createSlice({
         state.directions.push(action.payload)
       }
     })
+    builder.addCase(
+      updateDirectionTC.fulfilled,
+      (state, action: PayloadAction<DirectionType | undefined>) => {
+        if (action.payload?.uuid) {
+          state.directions.forEach(direction => {
+            if (direction.uuid === action.payload?.uuid) {
+              direction.name = action.payload?.name
+            }
+          })
+        }
+      },
+    )
   },
 })
 

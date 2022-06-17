@@ -12,4 +12,7 @@ export const directionsAPI = {
 
   postDirection: (directionName: DirectionNameType) =>
     instance.post<EditElementResponseType>(RequestSource.DIRECTION, directionName),
+
+  updateDirection: (direction: DirectionType) =>
+    instance.put<EditElementResponseType>(RequestSource.DIRECTION, direction),
 }

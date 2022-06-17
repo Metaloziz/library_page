@@ -7,7 +7,7 @@ import { DirectionForm } from 'pages/CreationPage/EditDirection/DirectionForm/Di
 import style from 'pages/CreationPage/EditDirection/EditDirection.module.scss'
 import { selectDirections } from 'store/selectors/directions'
 import { useAppDispatch } from 'store/store'
-import { postDirectionsTC } from 'store/thunks/directions_thunks'
+import { postDirectionsTC, updateDirectionTC } from 'store/thunks/directions_thunks'
 import { DirectionType } from 'store/types/DirectionType'
 
 export const EditDirection: FC = () => {
@@ -23,7 +23,7 @@ export const EditDirection: FC = () => {
   }
 
   const updateAuthor = (direction: DirectionType): void => {
-    console.log(direction)
+    dispatch(updateDirectionTC(direction))
   }
 
   const authorTag = directions.map(direction => (
