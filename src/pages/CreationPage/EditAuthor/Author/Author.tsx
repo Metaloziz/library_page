@@ -1,7 +1,8 @@
 import { FC } from 'react'
 
+import style from './Author.module.scss'
+
 import { DeleteButton } from 'components'
-import style from 'pages/CreationPage/Author/Author.module.scss'
 import { SectionPropsType } from 'store/types/SectionPropsType'
 
 export const Author: FC<SectionPropsType> = ({

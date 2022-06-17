@@ -14,7 +14,7 @@ let initialState: AuthorInitialStateType
 let newAuthors: AuthorType[]
 let newAuthor: AuthorType
 let updatedAuthor: AuthorType
-const authorId: string = '10'
+const newAuthorId: string = '10'
 const updateAuthorId: string = '3'
 const deleteAuthorId: string = '4'
 
@@ -32,7 +32,7 @@ beforeEach(() => {
   ]
 
   newAuthor = {
-    uuid: authorId,
+    uuid: newAuthorId,
     full_name: 'Martin',
   }
 
@@ -51,11 +51,11 @@ describe('author reducer', () => {
     expect(endState.authors).toStrictEqual(newAuthors)
   })
   test('should add the author', () => {
-    const action = getAuthorTC.fulfilled(newAuthor, '', authorId)
+    const action = getAuthorTC.fulfilled(newAuthor, '', newAuthorId)
 
     const endState = authorsReducer(initialState, action)
 
-    const currentAuthor = findElement(endState.authors, authorId)
+    const currentAuthor = findElement(endState.authors, newAuthorId)
 
     expect(currentAuthor).toStrictEqual(newAuthor)
   })

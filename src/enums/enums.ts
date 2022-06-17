@@ -9,6 +9,7 @@ export enum Path {
 
 export enum RequestSource {
   DIRECTIONS = '/directions',
+  DIRECTION = '/direction',
   AUTHORS = '/authors',
   AUTHOR = '/author',
   TAGS = '/tags',
@@ -24,6 +25,9 @@ export enum RequestCommonData {
 
 export enum StatusCode {
   GET_DIRECTIONS_SUCCESS = 200,
+  GET_DIRECTION_SUCCESS = 200,
+  POST_DIRECTIONS_SUCCESS = 201,
+
   GET_AUTHORS_SUCCESS = 200,
   GET_AUTHOR_SUCCESS = 200,
   GET_TAGS_SUCCESS = 200,

@@ -1,0 +1,14 @@
+@import "/src/styles/mixin";
+@import "/src/styles/variables";
+
+.container {
+  @include container();
+  @include inputStyle(); // костыль
+
+  width: auto;
+
+  & div {
+    @include displayContentCenter();
+    align-items: flex-start;
+  }
+}

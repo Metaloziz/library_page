@@ -20,7 +20,7 @@ beforeEach(() => {
   appInitialState = {
     isError: false,
     errorMessage: '',
-    isAdmin: false,
+    isAdmin: true,
     courses: [],
     contacts: {
       address: '',

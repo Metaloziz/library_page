@@ -4,8 +4,8 @@ import { useSelector } from 'react-redux'
 
 import style from './EditAuthor.module.scss'
 
-import { Author } from 'pages/CreationPage/Author/Author'
-import { NewAuthorForm } from 'pages/CreationPage/NewAuthorForm/NewAuthorForm'
+import { Author } from 'pages/CreationPage/EditAuthor/Author/Author'
+import { NewAuthorForm } from 'pages/CreationPage/EditAuthor/NewAuthorForm/NewAuthorForm'
 import { selectAuthors } from 'store/selectors/authors'
 import { useAppDispatch } from 'store/store'
 import { deleteAuthorTC, postAuthorTC, updateAuthorTC } from 'store/thunks/authors_thunks'
