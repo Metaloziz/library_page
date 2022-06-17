@@ -1,6 +1,7 @@
 import { FIRST_ARRAY_ITEM } from 'constants/constants'
 import { directionsReducer, setDirectionAC } from 'store/reducers/directions_reducer'
 import {
+  deleteDirectionTC,
   getDirectionsTC,
   getDirectionTC,
   updateDirectionTC,
@@ -15,11 +16,15 @@ const newActiveDirection: string = '10'
 let newDirection: DirectionType
 let updatedDirection: DirectionType
 const updatedDirectionId: string = '21'
+const deleteDirectionId: string = '22'
 const newDirectionId: string = '20'
 
 beforeEach(() => {
   directionInitialState = {
-    directions: [{ uuid: updatedDirectionId, name: 'PYTHON' }],
+    directions: [
+      { uuid: updatedDirectionId, name: 'PYTHON' },
+      { uuid: deleteDirectionId, name: 'PYTHON2' },
+    ],
     activeDirection: '0',
   }
 
@@ -66,5 +71,15 @@ describe('direction reducer', () => {
     const endState = directionsReducer(directionInitialState, action)
 
     expect(endState.directions[FIRST_ARRAY_ITEM].name).toBe(updatedDirection.name)
+  })
+
+  test('should delete the direction', () => {
+    const action = deleteDirectionTC.fulfilled(deleteDirectionId, '', deleteDirectionId)
+
+    const endState = directionsReducer(directionInitialState, action)
+
+    const result = endState.directions.find(({ uuid }) => uuid === deleteDirectionId)
+
+    expect(result).toBeUndefined()
   })
 })

@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import {
+  deleteDirectionTC,
   getDirectionsTC,
   getDirectionTC,
   updateDirectionTC,
@@ -44,6 +45,14 @@ const mainSlice = createSlice({
         }
       },
     )
+
+    builder.addCase(deleteDirectionTC.fulfilled, (state, action) => {
+      if (action.payload) {
+        state.directions = state.directions.filter(
+          direction => direction.uuid !== action.payload,
+        )
+      }
+    })
   },
 })
 

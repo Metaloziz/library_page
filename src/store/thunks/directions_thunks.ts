@@ -81,3 +81,21 @@ export const updateDirectionTC = createAsyncThunk(
     }
   },
 )
+
+export const deleteDirectionTC = createAsyncThunk(
+  'directions/deleteDirectionTC',
+  async (directionId: string, { dispatch }) => {
+    try {
+      dispatch(setIsLoadingStatusAC(true))
+
+      const { status } = await directionsAPI.deleteDirection(directionId)
+      if (status === StatusCode.DELETE_DIRECTION_SUCCESS) {
+        return directionId
+      }
+    } catch (error) {
+      setThunkError(dispatch, error as ResponseErrorType)
+    } finally {
+      dispatch(setIsLoadingStatusAC(false))
+    }
+  },
+)

@@ -7,7 +7,11 @@ import { DirectionForm } from 'pages/CreationPage/EditDirection/DirectionForm/Di
 import style from 'pages/CreationPage/EditDirection/EditDirection.module.scss'
 import { selectDirections } from 'store/selectors/directions'
 import { useAppDispatch } from 'store/store'
-import { postDirectionsTC, updateDirectionTC } from 'store/thunks/directions_thunks'
+import {
+  deleteDirectionTC,
+  postDirectionsTC,
+  updateDirectionTC,
+} from 'store/thunks/directions_thunks'
 import { DirectionType } from 'store/types/DirectionType'
 
 export const EditDirection: FC = () => {
@@ -15,7 +19,7 @@ export const EditDirection: FC = () => {
   const directions = useSelector(selectDirections)
 
   const deleteDirection = (id: string): void => {
-    console.log(id)
+    dispatch(deleteDirectionTC(id))
   }
 
   const createDirection = ({ name }: DirectionType): void => {

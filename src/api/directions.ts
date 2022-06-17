@@ -15,4 +15,7 @@ export const directionsAPI = {
 
   updateDirection: (direction: DirectionType) =>
     instance.put<EditElementResponseType>(RequestSource.DIRECTION, direction),
+
+  deleteDirection: (directionId: string) =>
+    instance.delete<EditElementResponseType>(`${RequestSource.DIRECTION}/${directionId}`),
 }
