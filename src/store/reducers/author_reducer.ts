@@ -1,6 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { getAuthorsTC, getAuthorTC, updateAuthorTC } from 'store/thunks/authors_thunks'
+import {
+  deleteAuthorTC,
+  getAuthorsTC,
+  getAuthorTC,
+  updateAuthorTC,
+} from 'store/thunks/authors_thunks'
 import { AuthorInitialStateType } from 'store/types/AuthorInitialStateType'
 import { AuthorType } from 'store/types/AuthorType'
 
@@ -35,6 +40,11 @@ const mainSlice = createSlice({
         }
       },
     )
+    builder.addCase(deleteAuthorTC.fulfilled, (state, action) => {
+      if (action.payload) {
+        state.authors = state.authors.filter(author => author.uuid !== action.payload)
+      }
+    })
   },
 })
 

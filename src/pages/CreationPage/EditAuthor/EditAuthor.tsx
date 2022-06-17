@@ -8,14 +8,16 @@ import { Author } from 'pages/CreationPage/Author/Author'
 import { NewAuthorForm } from 'pages/CreationPage/NewAuthorForm/NewAuthorForm'
 import { selectAuthors } from 'store/selectors/authors'
 import { useAppDispatch } from 'store/store'
-import { postAuthorTC, updateAuthorTC } from 'store/thunks/authors_thunks'
+import { deleteAuthorTC, postAuthorTC, updateAuthorTC } from 'store/thunks/authors_thunks'
 import { AuthorType } from 'store/types/AuthorType'
 
 export const EditAuthor: FC = () => {
-  const authors = useSelector(selectAuthors)
   const dispatch = useAppDispatch()
+  const authors = useSelector(selectAuthors)
 
-  const deleteSection = (): void => {}
+  const deleteAuthor = (authorId: string): void => {
+    dispatch(deleteAuthorTC(authorId))
+  }
 
   const createAuthor = (authorName: AuthorType): void => {
     dispatch(postAuthorTC({ full_name: authorName.full_name }))
@@ -26,7 +28,7 @@ export const EditAuthor: FC = () => {
   }
 
   const authorTag = authors.map(author => (
-    <Author key={author.uuid} author={author} deleteAuthor={deleteSection} />
+    <Author key={author.uuid} author={author} deleteAuthor={deleteAuthor} />
   ))
 
   return (

@@ -35,6 +35,7 @@ export enum StatusCode {
 
   POST_AUTHOR_SUCCESS = 201,
   UPDATE_AUTHOR_SUCCESS = 201,
+  DELETE_AUTHOR_SUCCESS = 200,
 }
 
 export enum DeBounceTimer {

@@ -81,3 +81,21 @@ export const updateAuthorTC = createAsyncThunk(
     }
   },
 )
+
+export const deleteAuthorTC = createAsyncThunk(
+  'authors/deleteAuthorTC',
+  async (authorId: string, { dispatch }) => {
+    try {
+      dispatch(setIsLoadingStatusAC(true))
+
+      const { status } = await authorsAPI.deleteAuthor(authorId)
+      if (status === StatusCode.DELETE_AUTHOR_SUCCESS) {
+        return authorId
+      }
+    } catch (error) {
+      setThunkError(dispatch, error as ResponseErrorType)
+    } finally {
+      dispatch(setIsLoadingStatusAC(false))
+    }
+  },
+)
