@@ -5,9 +5,14 @@ import { AuthorType } from 'store/types/AuthorType'
 import { PostAuthorResponseType } from 'store/types/PostAuthorResponseType'
 
 export const authorsAPI = {
-  getAuthors: () => instance.get<AuthorType[]>(`${RequestSource.AUTHORS}`),
+  getAuthors: () => instance.get<AuthorType[]>(RequestSource.AUTHORS),
+
   getAuthor: (authorId: string) =>
     instance.get<AuthorType>(`${RequestSource.AUTHOR}/${authorId} `),
+
   postAuthor: (authorName: AuthorNameType) =>
-    instance.post<PostAuthorResponseType>(`${RequestSource.AUTHOR}`, authorName),
+    instance.post<PostAuthorResponseType>(RequestSource.AUTHOR, authorName),
+
+  updateAuthor: (author: AuthorType) =>
+    instance.put<AuthorType[]>(RequestSource.AUTHOR, author),
 }

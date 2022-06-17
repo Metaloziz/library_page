@@ -5,6 +5,7 @@ import { StatusCode } from 'enums'
 import { setIsLoadingStatusAC } from 'store/reducers'
 import { ResponseErrorType } from 'store/types'
 import { AuthorNameType } from 'store/types/AuthorNameType'
+import { AuthorType } from 'store/types/AuthorType'
 import { setThunkError } from 'utils'
 import { separateId } from 'utils/separate_id'
 
@@ -54,6 +55,24 @@ export const postAuthorTC = createAsyncThunk(
       if (status === StatusCode.POST_AUTHOR_SUCCESS) {
         const newAuthorId = separateId(data.infoMsg)
         dispatch(getAuthorTC(newAuthorId))
+      }
+    } catch (error) {
+      setThunkError(dispatch, error as ResponseErrorType)
+    } finally {
+      dispatch(setIsLoadingStatusAC(false))
+    }
+  },
+)
+
+export const updateAuthorTC = createAsyncThunk(
+  'authors/updateAuthorTC',
+  async (author: AuthorType, { dispatch }) => {
+    try {
+      dispatch(setIsLoadingStatusAC(true))
+
+      const { status } = await authorsAPI.updateAuthor(author)
+      if (status === StatusCode.UPDATE_AUTHOR_SUCCESS) {
+        return author
       }
     } catch (error) {
       setThunkError(dispatch, error as ResponseErrorType)

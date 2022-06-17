@@ -8,13 +8,4 @@
   width: 800px;
   padding: 2% 1% 5% 2%;
   background-color: $back;
-
-  .listItems {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 10px;
-    font-weight: 600;
-  }
 }

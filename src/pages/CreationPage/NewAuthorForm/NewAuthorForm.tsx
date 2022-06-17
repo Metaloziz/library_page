@@ -1,39 +1,48 @@
-import { FC } from 'react'
+import { ChangeEvent, FC, useState } from 'react'
 
 import { SubmitHandler, useForm } from 'react-hook-form'
 
 import { Button } from 'components/commonComponents/Button/Button'
 import style from 'pages/CreationPage/NewAuthorForm/NewAuthorForm.module.scss'
-import { AuthorNameType } from 'store/types/AuthorNameType'
 import { AuthorType } from 'store/types/AuthorType'
 
 type SectionFormPropsType = {
-  setSectionData: (data: AuthorNameType) => void
+  setAuthor: (author: AuthorType) => void
   mode: 'add' | 'edit'
-  sections?: AuthorType[]
+  authors?: AuthorType[]
 }
 
-export const NewAuthorForm: FC<SectionFormPropsType> = ({
-  setSectionData,
-  mode,
-  sections,
-}) => {
+export const NewAuthorForm: FC<SectionFormPropsType> = ({ setAuthor, mode, authors }) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Pick<AuthorType, 'full_name'>>({ mode: 'onChange' })
+  } = useForm<AuthorType>({ mode: 'onChange' })
 
-  const onSubmit: SubmitHandler<AuthorNameType> = data => {
-    setSectionData(data)
+  const [authorName, setAuthorName] = useState<string>('')
+
+  const onSubmit: SubmitHandler<AuthorType> = data => {
+    setAuthor(data)
+  }
+  const selectAuthorName = (event: ChangeEvent<HTMLSelectElement>): void => {
+    authors?.forEach(author => {
+      if (author.uuid === event.currentTarget.value) {
+        setAuthorName(author.full_name)
+      }
+    })
   }
 
   const select =
     mode === 'edit' ? (
       <div>
         <label htmlFor="section">Автор</label>
-        <select id="section" defaultValue={1} {...register('full_name')}>
-          {sections?.map(({ uuid, full_name }) => (
+        <select
+          id="section"
+          defaultValue={1}
+          {...register('uuid')}
+          onChange={selectAuthorName}
+        >
+          {authors?.map(({ uuid, full_name }) => (
             <option key={uuid} value={uuid}>
               {full_name}
             </option>
@@ -52,11 +61,12 @@ export const NewAuthorForm: FC<SectionFormPropsType> = ({
             minLength: { value: 3, message: '3 символа минимум' },
             required: { value: true, message: 'обязательное поле' },
           })}
+          defaultValue={authorName}
           placeholder="имя"
         />
         <p>{errors.full_name?.message}</p>
       </div>
-      {select}
+      <div>{select}</div>
       <Button name="отправить" type="submit" />
     </form>
   )
