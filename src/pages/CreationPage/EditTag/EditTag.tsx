@@ -7,7 +7,7 @@ import { Tag } from 'pages/CreationPage/EditTag/Tag/Tag'
 import { TagForm } from 'pages/CreationPage/EditTag/TagForm/TagForm'
 import { selectTags } from 'store/selectors/tags'
 import { useAppDispatch } from 'store/store'
-import { postTagsTC, updateTagTC } from 'store/thunks/tags_thunks'
+import { deleteTagTC, postTagsTC, updateTagTC } from 'store/thunks/tags_thunks'
 import { TagNamePostType } from 'store/types/TagNamePostType'
 import { TagType } from 'store/types/TagType'
 
@@ -16,7 +16,7 @@ export const EditTag: FC = () => {
   const tags = useSelector(selectTags)
 
   const deleteTag = (id: string): void => {
-    // dispatch(deleteDirectionTC(id))
+    dispatch(deleteTagTC(id))
   }
 
   const createTag = ({ name }: TagNamePostType): void => {

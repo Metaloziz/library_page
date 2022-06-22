@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 
-import { getTagsTC, postTagsTC, updateTagTC } from 'store/thunks/tags_thunks'
+import { deleteTagTC, getTagsTC, postTagsTC, updateTagTC } from 'store/thunks/tags_thunks'
 import { TagsInitialStateType } from 'store/types/TagsInitialStateType'
 
 export const initialState: TagsInitialStateType = {
@@ -31,6 +31,12 @@ const mainSlice = createSlice({
             tag.name = payload?.name
           }
         })
+      }
+    })
+
+    addCase(deleteTagTC.fulfilled, (state, action) => {
+      if (action.payload) {
+        state.tags = state.tags.filter(tag => tag.uuid !== action.payload)
       }
     })
   },

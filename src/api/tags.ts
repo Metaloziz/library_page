@@ -12,4 +12,7 @@ export const tagsAPI = {
 
   updateAuthor: (newTag: TagType) =>
     instance.put<EditElementResponseType>(RequestSource.TAG, newTag),
+
+  deleteTag: (tagId: string) =>
+    instance.delete<EditElementResponseType>(`${RequestSource.TAG}/${tagId}`),
 }

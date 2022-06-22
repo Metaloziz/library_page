@@ -1,5 +1,5 @@
 import { tagsReducer } from 'store/reducers/tags_reducer'
-import { getTagsTC, postTagsTC, updateTagTC } from 'store/thunks/tags_thunks'
+import { deleteTagTC, getTagsTC, postTagsTC, updateTagTC } from 'store/thunks/tags_thunks'
 import { TagNamePostType } from 'store/types/TagNamePostType'
 import { TagsInitialStateType } from 'store/types/TagsInitialStateType'
 import { TagType } from 'store/types/TagType'
@@ -8,13 +8,17 @@ import { findElement } from 'utils'
 let initialState: TagsInitialStateType
 let newTags: TagType[]
 let newTagName: TagNamePostType
-let tag: TagType
+let newTag: TagType
 const updateTagId: string = '11'
+const deleteTagId: string = '12'
 let updateTag: TagType
 
 beforeEach(() => {
   initialState = {
-    tags: [{ uuid: updateTagId, name: 'Martin' }],
+    tags: [
+      { uuid: updateTagId, name: 'Martin' },
+      { uuid: deleteTagId, name: 'Martin Eden' },
+    ],
   }
 
   updateTag = {
@@ -29,7 +33,7 @@ beforeEach(() => {
 
   newTagName = { name: 'newName' }
 
-  tag = { uuid: '10', ...newTagName }
+  newTag = { uuid: '10', ...newTagName }
 })
 
 describe('tags reducer', () => {
@@ -42,13 +46,13 @@ describe('tags reducer', () => {
   })
 
   test('should add new tag', () => {
-    const action = postTagsTC.fulfilled(tag, '', newTagName)
+    const action = postTagsTC.fulfilled(newTag, '', newTagName)
 
     const endState = tagsReducer(initialState, action)
 
-    const currentTag = findElement(endState.tags, tag.uuid)
+    const currentTag = findElement(endState.tags, newTag.uuid)
 
-    expect(currentTag).toStrictEqual(tag)
+    expect(currentTag).toStrictEqual(newTag)
   })
 
   test('should update current tag', () => {
@@ -59,5 +63,15 @@ describe('tags reducer', () => {
     const currentTag = findElement(endState.tags, updateTag.uuid)
 
     expect(currentTag.uuid).toBe(updateTag.uuid)
+  })
+
+  test('should delete the tag', () => {
+    const action = deleteTagTC.fulfilled(deleteTagId, '', deleteTagId)
+
+    const endState = tagsReducer(initialState, action)
+
+    const result = endState.tags.find(tag => tag.uuid === deleteTagId)
+
+    expect(result).toBeUndefined()
   })
 })

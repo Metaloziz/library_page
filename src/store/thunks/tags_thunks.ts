@@ -60,3 +60,21 @@ export const updateTagTC = createAsyncThunk(
     }
   },
 )
+
+export const deleteTagTC = createAsyncThunk(
+  'tags/deleteTagTC',
+  async (tagId: string, { dispatch }) => {
+    try {
+      dispatch(setIsLoadingStatusAC(true))
+
+      const { status } = await tagsAPI.deleteTag(tagId)
+      if (status === StatusCode.DELETE_TAG_SUCCESS) {
+        return tagId
+      }
+    } catch (error) {
+      setThunkError(dispatch, error as ResponseErrorType)
+    } finally {
+      dispatch(setIsLoadingStatusAC(false))
+    }
+  },
+)
