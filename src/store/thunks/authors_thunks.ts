@@ -27,24 +27,6 @@ export const getAuthorsTC = createAsyncThunk(
   },
 )
 
-export const getAuthorTC = createAsyncThunk(
-  'authors/getAuthorTC',
-  async (authorId: string, { dispatch }) => {
-    try {
-      dispatch(setIsLoadingStatusAC(true))
-
-      const { data, status } = await authorsAPI.getAuthor(authorId)
-      if (status === StatusCode.GET_AUTHOR_SUCCESS) {
-        return data
-      }
-    } catch (error) {
-      setThunkError(dispatch, error as ResponseErrorType)
-    } finally {
-      dispatch(setIsLoadingStatusAC(false))
-    }
-  },
-)
-
 export const postAuthorTC = createAsyncThunk(
   'authors/postAuthorTC',
   async (authorName: AuthorNamePostType, { dispatch }) => {
@@ -53,8 +35,11 @@ export const postAuthorTC = createAsyncThunk(
 
       const { data, status } = await authorsAPI.postAuthor(authorName)
       if (status === StatusCode.POST_AUTHOR_SUCCESS) {
-        const newAuthorId = separateId(data.infoMsg)
-        dispatch(getAuthorTC(newAuthorId)) // todo заменить, можно обойтись без запроса
+        const author: AuthorType = {
+          full_name: authorName.full_name,
+          uuid: separateId(data.infoMsg),
+        }
+        return author
       }
     } catch (error) {
       setThunkError(dispatch, error as ResponseErrorType)

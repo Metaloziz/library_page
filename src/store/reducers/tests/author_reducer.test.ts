@@ -3,10 +3,11 @@ import { authorsReducer } from 'store/reducers/author_reducer'
 import {
   deleteAuthorTC,
   getAuthorsTC,
-  getAuthorTC,
+  postAuthorTC,
   updateAuthorTC,
 } from 'store/thunks/authors_thunks'
 import { AuthorInitialStateType } from 'store/types/AuthorInitialStateType'
+import { AuthorNamePostType } from 'store/types/AuthorNamePostType'
 import { AuthorType } from 'store/types/AuthorType'
 import { findElement } from 'utils'
 
@@ -15,6 +16,7 @@ let newAuthors: AuthorType[]
 let newAuthor: AuthorType
 let updatedAuthor: AuthorType
 const newAuthorId: string = '10'
+let newAuthorName: AuthorNamePostType
 const updateAuthorId: string = '3'
 const deleteAuthorId: string = '4'
 
@@ -31,9 +33,11 @@ beforeEach(() => {
     { uuid: '2', full_name: 'EVA' },
   ]
 
+  newAuthorName = { full_name: 'Martin' }
+
   newAuthor = {
     uuid: newAuthorId,
-    full_name: 'Martin',
+    full_name: newAuthorName.full_name,
   }
 
   updatedAuthor = {
@@ -51,7 +55,7 @@ describe('author reducer', () => {
     expect(endState.authors).toStrictEqual(newAuthors)
   })
   test('should add the author', () => {
-    const action = getAuthorTC.fulfilled(newAuthor, '', newAuthorId)
+    const action = postAuthorTC.fulfilled(newAuthor, '', newAuthorName)
 
     const endState = authorsReducer(initialState, action)
 

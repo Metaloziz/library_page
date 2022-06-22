@@ -7,9 +7,6 @@ import { EditElementResponseType } from 'store/types/EditElementResponseType'
 export const authorsAPI = {
   getAuthors: () => instance.get<AuthorType[]>(RequestSource.AUTHORS),
 
-  getAuthor: (authorId: string) =>
-    instance.get<AuthorType>(`${RequestSource.AUTHOR}/${authorId} `),
-
   postAuthor: (authorName: AuthorNamePostType) =>
     instance.post<EditElementResponseType>(RequestSource.AUTHOR, authorName),
 

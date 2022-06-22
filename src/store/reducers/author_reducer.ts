@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import {
   deleteAuthorTC,
   getAuthorsTC,
-  getAuthorTC,
+  postAuthorTC,
   updateAuthorTC,
 } from 'store/thunks/authors_thunks'
 import { AuthorInitialStateType } from 'store/types/AuthorInitialStateType'
@@ -17,18 +17,14 @@ const mainSlice = createSlice({
   name: 'authors',
   initialState,
   reducers: {},
-  extraReducers: builder => {
-    builder.addCase(getAuthorsTC.fulfilled, (state, action) => {
+  extraReducers: ({ addCase }) => {
+    addCase(getAuthorsTC.fulfilled, (state, action) => {
       if (action.payload) {
         state.authors = action.payload
       }
     })
-    builder.addCase(getAuthorTC.fulfilled, (state, action) => {
-      if (action.payload) {
-        state.authors.push(action.payload)
-      }
-    })
-    builder.addCase(
+
+    addCase(
       updateAuthorTC.fulfilled,
       (state, action: PayloadAction<AuthorType | undefined>) => {
         if (action.payload?.uuid) {
@@ -40,9 +36,16 @@ const mainSlice = createSlice({
         }
       },
     )
-    builder.addCase(deleteAuthorTC.fulfilled, (state, action) => {
+
+    addCase(deleteAuthorTC.fulfilled, (state, action) => {
       if (action.payload) {
         state.authors = state.authors.filter(author => author.uuid !== action.payload)
+      }
+    })
+
+    addCase(postAuthorTC.fulfilled, (state, action) => {
+      if (action.payload) {
+        state.authors.push(action.payload)
       }
     })
   },
