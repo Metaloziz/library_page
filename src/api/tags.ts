@@ -9,4 +9,7 @@ export const tagsAPI = {
 
   postTag: (newTag: TagNamePostType) =>
     instance.post<EditElementResponseType>(RequestSource.TAG, newTag),
+
+  updateAuthor: (newTag: TagType) =>
+    instance.put<EditElementResponseType>(RequestSource.TAG, newTag),
 }

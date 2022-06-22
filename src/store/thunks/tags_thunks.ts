@@ -42,3 +42,21 @@ export const postTagsTC = createAsyncThunk(
     }
   },
 )
+
+export const updateTagTC = createAsyncThunk(
+  'tags/updateTagTC',
+  async (newTag: TagType, { dispatch }) => {
+    try {
+      dispatch(setIsLoadingStatusAC(true))
+
+      const { status } = await tagsAPI.updateAuthor(newTag)
+      if (status === StatusCode.UPDATE_TAG_SUCCESS) {
+        return newTag
+      }
+    } catch (error) {
+      setThunkError(dispatch, error as ResponseErrorType)
+    } finally {
+      dispatch(setIsLoadingStatusAC(false))
+    }
+  },
+)
