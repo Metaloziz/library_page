@@ -10,9 +10,13 @@ export enum Path {
 export enum RequestSource {
   DIRECTIONS = '/directions',
   DIRECTION = '/direction',
+
   AUTHORS = '/authors',
   AUTHOR = '/author',
+
   TAGS = '/tags',
+  TAG = '/tag',
+
   BOOKS = '/books',
   VIDEO = '/videos',
   ARTICLES = '/articles',
@@ -32,8 +36,12 @@ export enum StatusCode {
 
   GET_AUTHORS_SUCCESS = 200,
   GET_AUTHOR_SUCCESS = 200,
+
   GET_TAGS_SUCCESS = 200,
+  POST_TAG_SUCCESS = 201,
+
   GET_VIDEOS_SUCCESS = 200,
+
   GET_ARTICLES_SUCCESS = 200,
 
   GET_COURSES_SUCCESS = 200,

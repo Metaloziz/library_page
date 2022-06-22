@@ -3,6 +3,7 @@ import { ChangeEvent, FC, useState } from 'react'
 import style from './CreationPage.module.scss'
 
 import { NavLinkComponent } from 'components'
+import { selectorElements } from 'constants/creationPageSelector'
 import { Path } from 'enums'
 import {
   ActiveMode,
@@ -23,8 +24,11 @@ export const CreationPage: FC = () => {
       <h1>Добавить</h1>
       <label>
         <select id="section" onChange={selectActiveMode}>
-          <option value="direction">Раздел</option>
-          <option value="author">Автора</option>
+          {selectorElements.map(({ value, name }) => (
+            <option key={value} value={value}>
+              {name}
+            </option>
+          ))}
         </select>
       </label>
       <ActiveMode mode={activeMode} />

@@ -4,7 +4,10 @@ import { tagsAPI } from 'api/tags'
 import { StatusCode } from 'enums'
 import { setIsLoadingStatusAC } from 'store/reducers'
 import { ResponseErrorType } from 'store/types'
+import { TagNamePostType } from 'store/types/TagNamePostType'
+import { TagType } from 'store/types/TagType'
 import { setThunkError } from 'utils'
+import { separateId } from 'utils/separate_id'
 
 export const getTagsTC = createAsyncThunk('tags/getTagsTC', async (_, { dispatch }) => {
   try {
@@ -20,3 +23,22 @@ export const getTagsTC = createAsyncThunk('tags/getTagsTC', async (_, { dispatch
     dispatch(setIsLoadingStatusAC(false))
   }
 })
+
+export const postTagsTC = createAsyncThunk(
+  'tags/postTagsTC',
+  async (newTag: TagNamePostType, { dispatch }) => {
+    try {
+      dispatch(setIsLoadingStatusAC(true))
+
+      const { data, status } = await tagsAPI.postTag(newTag)
+      if (status === StatusCode.POST_TAG_SUCCESS) {
+        const tag: TagType = { name: newTag.name, uuid: separateId(data.infoMsg) }
+        return tag
+      }
+    } catch (error) {
+      setThunkError(dispatch, error as ResponseErrorType)
+    } finally {
+      dispatch(setIsLoadingStatusAC(false))
+    }
+  },
+)

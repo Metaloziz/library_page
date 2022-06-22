@@ -1,6 +1,6 @@
 import { instance } from 'api/instance'
 import { RequestSource } from 'enums/enums'
-import { AuthorNameType } from 'store/types/AuthorNameType'
+import { AuthorNamePostType } from 'store/types/AuthorNamePostType'
 import { AuthorType } from 'store/types/AuthorType'
 import { EditElementResponseType } from 'store/types/EditElementResponseType'
 
@@ -10,7 +10,7 @@ export const authorsAPI = {
   getAuthor: (authorId: string) =>
     instance.get<AuthorType>(`${RequestSource.AUTHOR}/${authorId} `),
 
-  postAuthor: (authorName: AuthorNameType) =>
+  postAuthor: (authorName: AuthorNamePostType) =>
     instance.post<EditElementResponseType>(RequestSource.AUTHOR, authorName),
 
   updateAuthor: (author: AuthorType) =>
