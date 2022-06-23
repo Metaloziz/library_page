@@ -1,6 +1,7 @@
 import { FC } from 'react'
 
 import { EditAuthor } from 'pages/CreationPage/EditAuthor/EditAuthor'
+import { EditBook } from 'pages/CreationPage/EditBook/EditBook'
 import { EditDirection } from 'pages/CreationPage/EditDirection/EditDirection'
 import { EditTag } from 'pages/CreationPage/EditTag/EditTag'
 
@@ -14,6 +15,8 @@ export const ActiveMode: FC<{ mode: CreationPageModeType }> = ({ mode }) => {
       return <EditAuthor />
     case 'tag':
       return <EditTag />
+    case 'book':
+      return <EditBook />
     default:
       return <EditDirection />
   }

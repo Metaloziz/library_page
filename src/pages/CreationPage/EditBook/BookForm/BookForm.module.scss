@@ -1,0 +1,35 @@
+@import "src/styles/variables";
+@import "src/styles/mixin";
+
+
+.container {
+  @include displayContentCenter();
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 10px;
+
+  div {
+    //width: 100%;
+    //@include labelStyle();
+  }
+
+  label {
+
+  }
+
+  p {
+    @include formErrorMessage();
+  }
+
+  div {
+    input {
+      @include inputStyle();
+    }
+  }
+
+
+  textarea {
+    @include inputStyle();
+  }
+
+}
