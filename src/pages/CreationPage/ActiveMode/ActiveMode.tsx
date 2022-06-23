@@ -4,7 +4,7 @@ import { EditAuthor } from 'pages/CreationPage/EditAuthor/EditAuthor'
 import { EditDirection } from 'pages/CreationPage/EditDirection/EditDirection'
 import { EditTag } from 'pages/CreationPage/EditTag/EditTag'
 
-export type CreationPageModeType = 'direction' | 'author' | 'tag'
+export type CreationPageModeType = 'direction' | 'author' | 'tag' | 'book'
 
 export const ActiveMode: FC<{ mode: CreationPageModeType }> = ({ mode }) => {
   switch (mode) {
