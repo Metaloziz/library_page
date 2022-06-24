@@ -7,7 +7,7 @@ import { separateAddress } from 'utils'
 const initialState: InitialAppStateType = {
   isError: false,
   errorMessage: '',
-  isAdmin: false,
+  isAdmin: true, // true for dev
   courses: [
     { description_course: '', name_course: '' },
     { description_course: '', name_course: '' },

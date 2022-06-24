@@ -18,6 +18,8 @@ export enum RequestSource {
   TAG = '/tag',
 
   BOOKS = '/books',
+  BOOK = '/book',
+
   VIDEO = '/videos',
   ARTICLES = '/articles',
 }
@@ -35,6 +37,9 @@ export enum StatusCode {
   DELETE_DIRECTION_SUCCESS = 200,
 
   GET_AUTHORS_SUCCESS = 200,
+
+  GET_BOOKS_SUCCESS = 200,
+  POST_BOOK_SUCCESS = 201,
 
   GET_TAGS_SUCCESS = 200,
   POST_TAG_SUCCESS = 201,

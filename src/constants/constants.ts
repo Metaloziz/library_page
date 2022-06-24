@@ -14,5 +14,5 @@ export const THIRD_ARRAY_ITEM = 2
 export const FIRST_PREVIEW_ITEM = 0
 export const PREVIEW_ITEMS_COUNT = 3
 
-export const difficultyItems: DifficultyType[] = ['low', 'middle', 'hard']
+export const difficultyItems: DifficultyType[] = ['senior', 'middle', 'junior']
 export const languageItems: LanguageType[] = ['eng', 'rus']

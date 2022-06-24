@@ -9,15 +9,15 @@ export type CreationPageModeType = 'direction' | 'author' | 'tag' | 'book'
 
 export const ActiveMode: FC<{ mode: CreationPageModeType }> = ({ mode }) => {
   switch (mode) {
+    case 'book':
+      return <EditBook />
     case 'direction':
       return <EditDirection />
     case 'author':
       return <EditAuthor />
     case 'tag':
       return <EditTag />
-    case 'book':
-      return <EditBook />
     default:
-      return <EditDirection />
+      return <EditBook />
   }
 }

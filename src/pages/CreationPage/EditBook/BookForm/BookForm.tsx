@@ -39,7 +39,7 @@ export const BookForm: FC<BookFormPropsType> = ({ setBook }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={style.container}>
-      <div>
+      <div className={style.title}>
         <label>Заголовок книги:</label>
         <input
           {...register('title', {
@@ -48,6 +48,7 @@ export const BookForm: FC<BookFormPropsType> = ({ setBook }) => {
             required: { value: true, message: 'обязательное поле' },
           })}
           placeholder="Заголовок"
+          defaultValue="Заголовок"
         />
         <p>{errors.title?.message}</p>
       </div>
@@ -91,7 +92,7 @@ export const BookForm: FC<BookFormPropsType> = ({ setBook }) => {
           ))}
         </select>
       </div>
-      <div>
+      <div className={style.year}>
         <label>Год издания:</label>
         <input
           {...register('edition_date', {
@@ -111,6 +112,7 @@ export const BookForm: FC<BookFormPropsType> = ({ setBook }) => {
             minLength: { value: 4, message: '4 символа минимум' },
             required: { value: true, message: 'обязательное поле' },
           })}
+          defaultValue="обязательное поле"
           required
           rows={6}
         />
@@ -127,17 +129,30 @@ export const BookForm: FC<BookFormPropsType> = ({ setBook }) => {
       </div>
       <div>
         <label>Теги:</label>
-        <select {...register('tags_uuids')}>
-          {tags.map(({ uuid, name }) => (
-            <option key={uuid} value={uuid}>
-              {name}
-            </option>
-          ))}
-        </select>
+        <Controller
+          control={control}
+          name="tags_uuids"
+          render={({ field: { ref, onChange } }) => (
+            <Select
+              // @ts-ignore // todo надо придумать как убрать
+              inputRef={ref}
+              options={tags.map(convertItemsSelectType)}
+              onChange={val => onChange(val!.value)}
+            />
+          )}
+        />
       </div>
       <div>
-        <label>Ссылка на картинку из интернета</label>
-        <input {...register('image')} type="file" />
+        <label>Обложка: </label>
+        <input {...register('image')} type="file" accept="image/png, image/jpeg" />
+      </div>
+      <div>
+        <label>Файл, PDF: </label>
+        <input
+          {...register('file')}
+          type="file"
+          accept="application/pdf,application/vnd.ms-excel"
+        />
       </div>
 
       <Button name="отправить" type="submit" />
