@@ -7,7 +7,7 @@ import Select from 'react-select'
 import style from './BookForm.module.scss'
 
 import { Button } from 'components/commonComponents/Button/Button'
-import { difficultyItems, languageItems } from 'constants/constants'
+import { difficultyItems, FIRST_ARRAY_ITEM, languageItems } from 'constants/constants'
 import { selectAuthors } from 'store/selectors/authors'
 import { selectDirections } from 'store/selectors/directions'
 import { selectTags } from 'store/selectors/tags'
@@ -52,7 +52,7 @@ export const BookForm: FC<BookFormPropsType> = ({ setBook }) => {
         />
         <p>{errors.title?.message}</p>
       </div>
-      <div>
+      <div className={style.direction}>
         <label>Раздел:</label>
         <Controller
           control={control}
@@ -61,13 +61,15 @@ export const BookForm: FC<BookFormPropsType> = ({ setBook }) => {
             <Select
               // @ts-ignore // todo надо придумать как убрать
               inputRef={ref}
+              required
+              defaultValue={directions.map(convertItemsSelectType)[FIRST_ARRAY_ITEM]}
               options={directions.map(convertItemsSelectType)}
-              onChange={val => onChange(val!.value)}
+              onChange={val => onChange(val)}
             />
           )}
         />
       </div>
-      <div>
+      <div className={style.select}>
         <label>Автор:</label>
         <Controller
           control={control}
@@ -76,21 +78,41 @@ export const BookForm: FC<BookFormPropsType> = ({ setBook }) => {
             <Select
               // @ts-ignore // todo надо придумать как убрать
               inputRef={ref}
+              required
+              defaultValue={authors.map(convertAuthorSelectType)[FIRST_ARRAY_ITEM]}
               options={authors.map(convertAuthorSelectType)}
               onChange={val => onChange(val!.value)}
             />
           )}
         />
       </div>
-      <div>
+      <div className={style.select}>
         <label>Сложность:</label>
-        <select {...register('difficulty')}>
-          {difficultyItems.map(item => (
-            <option key={item} value={item}>
-              {item}
-            </option>
-          ))}
-        </select>
+        <Controller
+          control={control}
+          name="difficulty"
+          render={({ field: { ref, onChange } }) => (
+            <Select
+              // @ts-ignore // todo надо придумать как убрать
+              inputRef={ref}
+              required
+              defaultValue={difficultyItems[FIRST_ARRAY_ITEM]}
+              options={difficultyItems}
+              onChange={val => onChange(val!.value)}
+            />
+          )}
+        />
+        {/* <select */}
+        {/*  {...register('difficulty', { */}
+        {/*    required: { value: true, message: 'обязательное поле' }, */}
+        {/*  })} */}
+        {/* > */}
+        {/*  {difficultyItems.map(item => ( */}
+        {/*    <option key={item} value={item}> */}
+        {/*      {item} */}
+        {/*    </option> */}
+        {/*  ))} */}
+        {/* </select> */}
       </div>
       <div className={style.year}>
         <label>Год издания:</label>
@@ -101,25 +123,29 @@ export const BookForm: FC<BookFormPropsType> = ({ setBook }) => {
             required: { value: true, message: 'обязательное поле' },
           })}
           type="number"
-          defaultValue={2000}
+          placeholder="1999"
         />
         <p>{errors.edition_date?.message}</p>
       </div>
-      <div>
+      <div className={style.textArea}>
         <label>Описание:</label>
         <textarea
           {...register('description', {
             minLength: { value: 4, message: '4 символа минимум' },
             required: { value: true, message: 'обязательное поле' },
           })}
-          defaultValue="обязательное поле"
           required
           rows={6}
         />
+        <p>{errors.description?.message}</p>
       </div>
-      <div>
+      <div className={style.select}>
         <label>Язык книги:</label>
-        <select {...register('language')}>
+        <select
+          {...register('language', {
+            required: { value: true, message: 'обязательное поле' },
+          })}
+        >
           {languageItems.map(item => (
             <option key={item} value={item}>
               {item}
@@ -127,7 +153,7 @@ export const BookForm: FC<BookFormPropsType> = ({ setBook }) => {
           ))}
         </select>
       </div>
-      <div>
+      <div className={style.select}>
         <label>Теги:</label>
         <Controller
           control={control}
@@ -136,24 +162,35 @@ export const BookForm: FC<BookFormPropsType> = ({ setBook }) => {
             <Select
               // @ts-ignore // todo надо придумать как убрать
               inputRef={ref}
+              defaultValue={tags.map(convertItemsSelectType)[FIRST_ARRAY_ITEM]}
               options={tags.map(convertItemsSelectType)}
               onChange={val => onChange(val!.value)}
             />
           )}
         />
       </div>
-      <div>
+      <div className={style.select}>
         <label>Обложка: </label>
-        <input {...register('image')} type="file" accept="image/png, image/jpeg" />
+        <input
+          {...register('image', {
+            required: { value: true, message: 'обязательное поле' },
+          })}
+          type="file"
+          accept="image/png, image/jpeg"
+        />
+        <p>{errors.image?.message}</p>
       </div>
-      <div>
+      <div className={style.select}>
         <label>Файл, PDF: </label>
         <input
-          {...register('file')}
+          {...register('file', {
+            required: { value: true, message: 'обязательное поле' },
+          })}
           type="file"
           accept="application/pdf,application/vnd.ms-excel"
         />
       </div>
+      <p>{errors.file?.message}</p>
 
       <Button name="отправить" type="submit" />
     </form>

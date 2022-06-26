@@ -1,5 +1,10 @@
 export type DifficultyType = 'senior' | 'middle' | 'junior'
 
+export type DifficultyItemType = {
+  label: string
+  value: DifficultyType
+}
+
 export type LanguageType = 'rus' | 'eng'
 
 export type BookPostBodyType = {

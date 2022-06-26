@@ -8,19 +8,38 @@
   flex-direction: column;
   gap: 10px;
 
-  div {
+  .textArea {
+    @include labelStyle();
+    width: 100%;
 
+    textarea {
+      resize: none;
+    }
   }
 
+  .direction {
+    width: 50%;
+    @include labelStyle();
+  }
 
   .title {
     width: 100%;
     @include labelStyle();
   }
 
+  .select {
+    width: 50%;
+    @include labelStyle();
+  }
+
 
   .year {
     @include labelStyle();
+
+    input {
+      width: 100px;
+    }
+
   }
 
 

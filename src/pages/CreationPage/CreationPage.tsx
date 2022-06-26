@@ -11,7 +11,7 @@ import {
 } from 'pages/CreationPage/ActiveMode/ActiveMode'
 
 export const CreationPage: FC = () => {
-  const [activeMode, setActiveMode] = useState<CreationPageModeType>('direction')
+  const [activeMode, setActiveMode] = useState<CreationPageModeType>('book')
 
   const selectActiveMode = (event: ChangeEvent<HTMLSelectElement>): void => {
     const mode = event.currentTarget.value as CreationPageModeType
